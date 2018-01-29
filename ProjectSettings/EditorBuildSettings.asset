@@ -4,4 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/_Project/Scenes/Menu.unity
+    guid: 20c70e03171ed8a4d808805b112ce492
+  - enabled: 1
+    path: Assets/_Project/Scenes/Defibrillateur.unity
+    guid: 03b0a1d4672c44a409355c7dea453c7f

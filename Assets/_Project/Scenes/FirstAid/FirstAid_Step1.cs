@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Defibrillateur_Step1 : BasicStep
+public class FirstAid_Step1 : BasicStep
 {
 
 	// Use this for initialization
