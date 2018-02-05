@@ -12,6 +12,11 @@ public class FlickeringObject : MonoBehaviour {
 
     private float time = 0f;
 
+    public void SetFlickering(bool state)
+    {
+        isFlickering = state;
+    }
+
 	// Use this for initialization
 	void Start () {
         meshRenderer = GetComponent<MeshRenderer>();
