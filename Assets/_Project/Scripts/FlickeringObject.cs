@@ -4,18 +4,13 @@ using UnityEngine;
 
 public class FlickeringObject : MonoBehaviour {
 
-    public bool isFlickering = false;
+    public bool IsFlickering { get; set; } = false;
 
     public Color flickeringColor;
     public AnimationCurve flickeringCurve;
     private MeshRenderer meshRenderer;
 
     private float time = 0f;
-
-    public void SetFlickering(bool state)
-    {
-        isFlickering = state;
-    }
 
 	// Use this for initialization
 	void Start () {
@@ -25,7 +20,7 @@ public class FlickeringObject : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (isFlickering)
+        if (IsFlickering)
         {
             time += Time.deltaTime;
             Color color = Color.Lerp(Color.black, flickeringColor, flickeringCurve.Evaluate(time));

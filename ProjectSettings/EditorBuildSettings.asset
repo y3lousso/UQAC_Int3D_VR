@@ -9,5 +9,5 @@ EditorBuildSettings:
     path: Assets/_Project/Scenes/Menu.unity
     guid: 20c70e03171ed8a4d808805b112ce492
   - enabled: 1
-    path: Assets/_Project/Scenes/Defibrillateur.unity
+    path: Assets/_Project/Scenes/FirstAid.unity
     guid: 03b0a1d4672c44a409355c7dea453c7f
