@@ -2,77 +2,112 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicStep : MonoBehaviour {
+public abstract class BasicStep : MonoBehaviour {
 
-    
     private Scenario scenario;
    
     [Header("Scenario Management")]
-    public bool isAnimationStep = false;
+    public bool autoPassAfterAudioStart = false;
     public List<BasicStep> previousSteps;
     public List<BasicStep> nextSteps;
-    public bool isActivated = false;
-    public bool isCompleted = false;
+
+    private bool isActivated;
+    public bool IsActivated
+    {
+        get
+        {
+            return isActivated;
+        }
+        set
+        {
+            if(value == true)
+            {
+                isActivated = true;
+                scenario.AddActiveStep(this);
+                Activate();
+            }
+            else
+            {
+                isActivated = false;
+                scenario.RemoveActiveStep(this);
+            }           
+        }
+    }
+    private bool isCompleted;
+    public bool IsCompleted
+    {
+        get
+        {
+            return isCompleted;
+        }
+        set
+        {
+            if (value == true)
+            {
+                isCompleted = true;
+                scenario.AddCompletedStep(this);
+            }
+            else
+            {
+                isCompleted = false;
+                scenario.RemoveCompletedStep(this);
+            }
+        }
+    }
 
     [Header("Step Instructions")]
     public AudioClip audioStartClip;
     public AudioClip audioHelpClip;
     public FlickeringObject flickeringObject;
 
-
-    public void Awake()
+    private void Awake()
     {
         scenario = GetComponentInParent<Scenario>();
     }
 
+    public abstract void Enter();
+    public abstract void Exit();
+
     /// <summary>
-    /// When the step start to be effective
+    /// Start when the step start to be effective
     /// </summary>
     public void Activate()
     {
-        if (isAnimationStep)
+        scenario.AudioManager.PlaySoundClip(audioStartClip, true);
+        if (autoPassAfterAudioStart)
         {
             StartCoroutine("AutoPassAfterClip", audioStartClip.length);
         }
-        scenario.PlaySoundClip(audioStartClip, true);
-
+        Enter();
     }
 
-    public IEnumerator AutoPassAfterClip(float time)
+    /// <summary>
+    /// Complete the step after playing the start audio clip.
+    /// </summary>
+    /// <param name="time"></param>
+    /// <returns></returns>
+    private IEnumerator AutoPassAfterClip(float time)
     {
         yield return new WaitForSeconds(time);
         Complete();
     }
 
-    public void SetFlickerAssociatedObject(bool state)
-    {
-        if (flickeringObject != null)
-        {
-            flickeringObject.SetFlickering(state);
-        }
-        else
-        {
-            Debug.Log(gameObject.name + "need a flickering object scrip.");
-        }
-    }
-
-    #region StepOrganization
     /// <summary>
     /// Activate the step only if all previous steps are completed
     /// </summary>
     public void TryActivate()
     {
-        bool previousStepsCompleted = true;
-        foreach (BasicStep previousStep in previousSteps) // if all previous step are completed or no previous step
+        // if all previous step are completed or no previous step
+        bool previousStepsCompleted = true;       
+        foreach (BasicStep previousStep in previousSteps) 
         {
-            previousStepsCompleted &= previousStep.isCompleted;
+            previousStepsCompleted &= previousStep.IsCompleted;
         }
+
         // If all the previous steps are completed
         if (previousStepsCompleted == true)
         {
-            isActivated = true;
-            scenario.AddActiveStep(this);
-            Activate();
+            IsActivated = true;                       
         }
     }
 
@@ -82,20 +117,19 @@ public class BasicStep : MonoBehaviour {
     /// </summary>
     public void Complete()
     {
-        if (isActivated)
+        Exit();
+        if (IsActivated)
         {
-            isActivated = false;
-            scenario.RemoveActiveStep(this);
+            // Remove the step from activated step list
+            IsActivated = false;
+            // Add the step to completed step list
+            IsCompleted = true;
 
-            isCompleted = true;
-            scenario.AddCompletedStep(this);
-
+            // Try to activate the following step
             foreach (BasicStep nextStep in nextSteps)
             {
                 nextStep.TryActivate();
-            }
-            
+            }           
         }
     }
-    #endregion
 }

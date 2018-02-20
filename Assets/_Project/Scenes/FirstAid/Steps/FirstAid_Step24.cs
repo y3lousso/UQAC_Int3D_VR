@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FirstAid_RootStep : BasicStep
+public class FirstAid_Step24 : BasicStep
 {
 
     // Start after the activation of the step
@@ -16,5 +16,4 @@ public class FirstAid_RootStep : BasicStep
     {
 
     }
-
 }
