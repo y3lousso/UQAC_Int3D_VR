@@ -479,6 +479,29 @@ ModelImporter:
     4300032: mobile9080W1
     4300034: mobile90198W1
     4300036: Extintor_0
+    11400000: Bookcase
+    11400002: Bureau_1
+    11400004: Bureau_2
+    11400006: directionalLight1
+    11400008: elevator_door:Mesh
+    11400010: exterior_door
+    11400012: Extintor_0
+    11400014: //RootNode
+    11400016: //RootNode
+    11400018: mobile90198W1
+    11400020: mobile9080W1
+    11400022: Office_Chair_1
+    11400024: Office_Chair_2
+    11400026: pCouloirMurs
+    11400028: pCouloirSol
+    11400030: pPieceMurs
+    11400032: pPieceSol
+    11400034: recycling_bin:recyling_bin_recyling_bin_PLASTIC_blue
+    11400036: transform10
+    11400038: whiteBoard:Mesh
+    11400040: window_couloir
+    11400042: window_piece_1
+    11400044: window_piece_2
   externalObjects: {}
   materials:
     importMaterials: 1
