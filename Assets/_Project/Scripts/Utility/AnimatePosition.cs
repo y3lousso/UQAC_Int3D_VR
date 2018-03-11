@@ -27,8 +27,6 @@ public class AnimatePosition : MonoBehaviour {
 	public AnimationCurve rotYCurve = AnimationCurve.Constant(0, 1, 0);
 	public AnimationCurve rotZCurve = AnimationCurve.Constant(0, 1, 0);
 
-	
-	
 
 	/// <summary>  
 	///		Starts the animation if runOnStart is true
