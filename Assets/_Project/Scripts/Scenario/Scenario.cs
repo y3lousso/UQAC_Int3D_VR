@@ -25,7 +25,7 @@ public class Scenario : MonoBehaviour {
     /// <summary>
     /// Entry point for help button
     /// </summary>
-	public void OnHelpButtonPressed()
+	public void PlayAudioHelp()
     {       
         AudioManager.PlaySoundClip(activatedSteps[0].audioHelpClip);
         if (activatedSteps[0].flickeringObject != null)
