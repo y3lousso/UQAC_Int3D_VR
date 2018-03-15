@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ScreenUIManager : MonoBehaviour {
+public class StandardUIManager : MonoBehaviour {
 
     public GameObject AppTab;
     public GameObject SoundTab;

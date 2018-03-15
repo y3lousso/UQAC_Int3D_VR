@@ -19,7 +19,8 @@ public class Scenario : MonoBehaviour {
     // Use this for initialization
     void Start () {
         // Try to activate the root step : it should always Activate.
-        rootStep.TryActivate();
+        // Delay the start to give time to the user
+        rootStep.Invoke("TryActivate", 2f);       
     }
     
     /// <summary>
