@@ -11,9 +11,12 @@ public class Scenario : MonoBehaviour {
     public List<BasicStep> activatedSteps = new List<BasicStep>();
     public List<BasicStep> completedSteps = new List<BasicStep>();
 
+	public static Scenario Instance;
+
     public void Awake()
     {
         AudioManager = GetComponent<AudioManager>();
+		Instance = this;
     }
 
     // Use this for initialization
@@ -67,4 +70,8 @@ public class Scenario : MonoBehaviour {
     {
         activatedSteps[0].Complete();
     }
+
+	static public void NextStep(){
+		Scenario.Instance.ForceComplete ();
+	}
 }
