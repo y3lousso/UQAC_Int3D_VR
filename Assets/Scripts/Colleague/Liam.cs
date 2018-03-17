@@ -11,6 +11,7 @@ public class Liam : MonoBehaviour {
 	public Vector3 currentPosition;
 
 	private Quaternion startRotation;
+	[SerializeField] private float movingBiaisis;
 
 	void Awake(){
 		Debug.Log ("start");
@@ -22,21 +23,31 @@ public class Liam : MonoBehaviour {
 
 	void Update(){
 		if (Input.GetKeyDown ("1")) {
-			Debug.Log ("startwalking");
-//			StartCoroutine ("Walking");
-		} else {
-			Debug.Log ("not walking");
+			StartCoroutine ("Walking");
 		}
+	}
+
+	public void StartCardiacArrest(){
+		StartCoroutine ("Walking");
 	}
 
 	IEnumerator Walking(){
 		animator.SetBool ("StartWalking", true);
 		while (Vector3.Distance(currentPosition, endPosition) > 0.1f) {
-			Vector3 currentPosition = (endPosition - startPosition) * Time.deltaTime;
+			currentPosition += transform.forward * movingBiaisis;
 			this.transform.position = currentPosition;
 			yield return 0;
 		}
 		animator.SetBool ("StartDying", true);
+	}
+
+	public void Die(){
+		StartCoroutine ("Dying");
+	}
+
+	IEnumerator Dying(){
+		yield return new WaitForSeconds (5.5f);
+		Scenario.NextStep ();
 	}
 
 }

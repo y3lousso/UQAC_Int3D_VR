@@ -5,10 +5,11 @@ using UnityEngine;
 public class FirstAid_Step02 : BasicStep
 {
 
+	[SerializeField] Liam liam;
+
     // Start after the activation of the step
     public override void Enter()
     {
-
     }
 
     // Start before the completion of the step
@@ -16,4 +17,9 @@ public class FirstAid_Step02 : BasicStep
     {
 
     }
+
+	public void OnTriggerEnter(){
+		//TODO stop player
+		liam.StartCardiacArrest ();
+	}
 }
