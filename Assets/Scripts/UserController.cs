@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UserController : MonoBehaviour {
+public enum UserState {standing, kneeling};
 
-	public enum UserState {standing, kneeling};
+public class UserController : MonoBehaviour {
 
 	[Header ("Start")]
 	[SerializeField] private Vector3 startPosition;

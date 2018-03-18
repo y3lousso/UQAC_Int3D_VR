@@ -4,16 +4,28 @@ using UnityEngine;
 
 public class FirstAid_Step04 : BasicStep
 {
+	[SerializeField] private UserController user;
+	[SerializeField] private bool isInCorrectArea;
 
-    // Start after the activation of the step
-    public override void Enter()
-    {
+	void Start(){
+		isInCorrectArea = false;
+	}
 
-    }
+	void Update(){
+		if (user.currentState == UserState.kneeling && isInCorrectArea && !this.IsCompleted) {
+			this.Complete();
+			Debug.Log ("complete !");
+		}
+	}
 
-    // Start before the completion of the step
-    public override void Exit()
-    {
+	void OnTriggerEnter(){
+		isInCorrectArea = true;
+	}
 
-    }
+	void OnTriggerExit(){
+		isInCorrectArea = false;
+	}
+
+	public override void Enter(){}
+	public override void Exit(){}
 }

@@ -21,6 +21,11 @@ public class Liam : MonoBehaviour {
 		liamAudioSource = this.gameObject.GetComponent<AudioSource> ();
 	}
 
+	void Update(){
+		if (Input.GetKeyDown ("1"))
+			StartCardiacArrest ();
+	}
+
     public void StartCardiacArrest(){
         StartCoroutine("Walking");
 	}
