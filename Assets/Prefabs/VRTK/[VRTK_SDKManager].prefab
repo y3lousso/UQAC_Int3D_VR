@@ -463,6 +463,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4814674825725746}
   - component: {fileID: 114059669748770732}
+  - component: {fileID: 114878352665009880}
   m_Layer: 0
   m_Name: '[VRTK_SDKManager]'
   m_TagString: Untagged
@@ -1103,7 +1104,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1669910338615154}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.451, y: 0, z: -5.236}
+  m_LocalPosition: {x: 5.46, y: 0, z: -5.236}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4227108144916676}
@@ -2988,6 +2989,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c731730425e54447ae6bfcc41d6fe585, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114878352665009880
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1669910338615154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 452f7b2b8f3f3ca458e9f72558632194, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startPosition: {x: 5.46, y: 0, z: -5.236}
+  startEulerRot: {x: 0, y: 0, z: 0}
+  currentState: 0
+  Setups: {fileID: 1657204010357816}
 --- !u!114 &114909902028431300
 MonoBehaviour:
   m_ObjectHideFlags: 1
