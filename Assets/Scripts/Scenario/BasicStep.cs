@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class BasicStep : MonoBehaviour {
 
     private Scenario scenario;
-   
+
     [Header("Scenario Management")]
     public bool autoPassAfterAudioStart = false;
     public List<BasicStep> previousSteps;
@@ -64,6 +64,8 @@ public abstract class BasicStep : MonoBehaviour {
     {
         scenario = GetComponentInParent<Scenario>();
     }
+
+
 
     public abstract void Enter();
     public abstract void Exit();
