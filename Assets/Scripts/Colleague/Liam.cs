@@ -10,6 +10,11 @@ public class Liam : MonoBehaviour {
 	public Vector3 endPosition;
 	public Vector3 currentPosition;
 
+	[Header("Sounds")]
+	[SerializeField] private AudioSource liamAudioSource;
+	[SerializeField] private AudioClip pain;
+	[SerializeField] private AudioClip fall;
+
 	private Quaternion startRotation;
 	[SerializeField] private float movingBiaisis;
 
@@ -19,6 +24,7 @@ public class Liam : MonoBehaviour {
 		this.transform.position = startPosition;
 		startRotation = Quaternion.Euler (startRotationEuler);
 		this.transform.rotation = startRotation;
+		liamAudioSource = this.gameObject.GetComponent<AudioSource> ();
 	}
 
 	void Update(){
@@ -46,7 +52,14 @@ public class Liam : MonoBehaviour {
 	}
 
 	IEnumerator Dying(){
-		yield return new WaitForSeconds (5.5f);
+		liamAudioSource.clip = pain;
+		liamAudioSource.Play ();
+		yield return new WaitForSeconds (2f);
+
+		liamAudioSource.clip = fall;
+		liamAudioSource.Play ();
+
+		yield return new WaitForSeconds (3f);
 		Scenario.NextStep ();
 	}
 
