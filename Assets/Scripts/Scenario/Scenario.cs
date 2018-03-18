@@ -13,7 +13,7 @@ public class Scenario : MonoBehaviour {
 
 	public static Scenario Instance;
 
-    public void Awake()
+    void Awake()
     {
         AudioManager = GetComponent<AudioManager>();
 		Instance = this;
@@ -66,12 +66,13 @@ public class Scenario : MonoBehaviour {
 
     #endregion
 
+    public BasicStep GetStep(int id)
+    {
+        return GetComponentsInChildren<BasicStep>()[id];
+    }
+
     public void ForceComplete()
     {
         activatedSteps[0].Complete();
     }
-
-	static public void NextStep(){
-		Scenario.Instance.ForceComplete ();
-	}
 }

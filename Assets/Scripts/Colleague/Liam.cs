@@ -52,7 +52,7 @@ public class Liam : MonoBehaviour {
 		liamAudioSource.Play ();
 
 		yield return new WaitForSeconds (3f);
-		Scenario.NextStep ();
+        Scenario.Instance.GetStep(2).Complete();
 	}
 
 }
