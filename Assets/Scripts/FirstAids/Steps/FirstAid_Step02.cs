@@ -10,6 +10,7 @@ public class FirstAid_Step02 : BasicStep
     // Start after the activation of the step
     public override void Enter()
     {
+        liam.StartCardiacArrest();
     }
 
     // Start before the completion of the step
@@ -18,8 +19,4 @@ public class FirstAid_Step02 : BasicStep
 
     }
 
-	public void OnTriggerEnter(){
-		//TODO stop player
-		liam.StartCardiacArrest ();
-	}
 }

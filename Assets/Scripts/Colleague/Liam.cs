@@ -4,45 +4,39 @@ using UnityEngine;
 
 public class Liam : MonoBehaviour {
 
-	public Animator animator;
-	public Vector3 startPosition;
-	public Vector3 startRotationEuler;
-	public Vector3 endPosition;
-	public Vector3 currentPosition;
+    public Animator animator;
+    public Transform start;
+    public Transform end;
 
-	private Quaternion startRotation;
-	[SerializeField] private float movingBiaisis;
+    public float currentTime = 0f;
 
-	void Awake(){
-		Debug.Log ("start");
-		currentPosition = startPosition;
-		this.transform.position = startPosition;
-		startRotation = Quaternion.Euler (startRotationEuler);
-		this.transform.rotation = startRotation;
-	}
+    [Range(0.1f, 20f)]
+    public float deplacementTime = 5f;
 
-	void Update(){
-		if (Input.GetKeyDown ("1")) {
-			StartCoroutine ("Walking");
-		}
-	}
+    public void Update()
+    {
+        
+    }
 
-	public void StartCardiacArrest(){
-		StartCoroutine ("Walking");
+    public void StartCardiacArrest(){
+        StartCoroutine("Walking");
 	}
 
 	IEnumerator Walking(){
 		animator.SetBool ("StartWalking", true);
-		while (Vector3.Distance(currentPosition, endPosition) > 0.1f) {
-			currentPosition += transform.forward * movingBiaisis;
-			this.transform.position = currentPosition;
-			yield return 0;
-		}
-		animator.SetBool ("StartDying", true);
+        while (currentTime<=deplacementTime)
+        {
+            transform.position = Vector3.Lerp(start.position, end.position, currentTime / deplacementTime);
+            transform.rotation = Quaternion.Slerp(start.rotation, end.rotation, currentTime / deplacementTime);
+            yield return new WaitForEndOfFrame();
+            currentTime += Time.deltaTime;
+        }
+        Die();
 	}
 
 	public void Die(){
-		StartCoroutine ("Dying");
+        animator.SetBool("StartDying", true);
+        StartCoroutine ("Dying");
 	}
 
 	IEnumerator Dying(){
