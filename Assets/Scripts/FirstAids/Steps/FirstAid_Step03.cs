@@ -16,4 +16,8 @@ public class FirstAid_Step03 : BasicStep
     {
 
     }
+
+	public void OnTriggerEnter(){
+		Scenario.NextStep ();
+	}
 }

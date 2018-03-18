@@ -5,18 +5,21 @@ using UnityEngine;
 public class Liam : MonoBehaviour {
 
     public Animator animator;
+
+    [Header("Deplacement")]
     public Transform start;
     public Transform end;
-
-    public float currentTime = 0f;
-
     [Range(0.1f, 20f)]
     public float deplacementTime = 5f;
 
-    public void Update()
-    {
-        
-    }
+    [Header("Sounds")]
+	[SerializeField] private AudioSource liamAudioSource;
+	[SerializeField] private AudioClip pain;
+	[SerializeField] private AudioClip fall;
+
+	void Awake(){
+		liamAudioSource = this.gameObject.GetComponent<AudioSource> ();
+	}
 
     public void StartCardiacArrest(){
         StartCoroutine("Walking");
@@ -24,6 +27,7 @@ public class Liam : MonoBehaviour {
 
 	IEnumerator Walking(){
 		animator.SetBool ("StartWalking", true);
+        float currentTime = 0;
         while (currentTime<=deplacementTime)
         {
             transform.position = Vector3.Lerp(start.position, end.position, currentTime / deplacementTime);
@@ -40,7 +44,14 @@ public class Liam : MonoBehaviour {
 	}
 
 	IEnumerator Dying(){
-		yield return new WaitForSeconds (5.5f);
+		liamAudioSource.clip = pain;
+		liamAudioSource.Play ();
+		yield return new WaitForSeconds (2f);
+
+		liamAudioSource.clip = fall;
+		liamAudioSource.Play ();
+
+		yield return new WaitForSeconds (3f);
 		Scenario.NextStep ();
 	}
 
