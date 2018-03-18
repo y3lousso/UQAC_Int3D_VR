@@ -5,6 +5,8 @@ using UnityEngine;
 public class FirstAid_Step03 : BasicStep
 {
 
+	[SerializeField] private Collider closeRangeTrigger;
+
     // Start after the activation of the step
     public override void Enter()
     {

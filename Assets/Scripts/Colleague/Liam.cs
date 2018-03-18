@@ -54,8 +54,8 @@ public class Liam : MonoBehaviour {
 	IEnumerator Dying(){
 		liamAudioSource.clip = pain;
 		liamAudioSource.Play ();
-		yield return new WaitForSeconds (2f);
 
+		yield return new WaitForSeconds (2f);
 		liamAudioSource.clip = fall;
 		liamAudioSource.Play ();
 
