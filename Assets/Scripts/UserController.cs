@@ -15,6 +15,9 @@ public class UserController : MonoBehaviour {
     public Transform headset;
     public float playerHigh = 1.75f;
 
+	[Header("Hands")]
+	public bool holdElectrodes;
+
     public void Awake()
     {
         if (instance == null)
@@ -25,6 +28,8 @@ public class UserController : MonoBehaviour {
         {
             throw new System.Exception("Singleton error");
         }
+
+		holdElectrodes = false;
     }
 
     void Start () {

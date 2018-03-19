@@ -13733,7 +13733,7 @@ GameObject:
   - component: {fileID: 521305429}
   - component: {fileID: 521305430}
   m_Layer: 0
-  m_Name: Step (21)
+  m_Name: Step (21) - Take the electrodes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13771,6 +13771,7 @@ MonoBehaviour:
   audioStartClip: {fileID: 0}
   audioHelpClip: {fileID: 8300000, guid: d628194e698c57343be2c3e7586f70ff, type: 3}
   flickeringObject: {fileID: 0}
+  user: {fileID: 2086187745}
 --- !u!1001 &564713777
 Prefab:
   m_ObjectHideFlags: 0
@@ -21602,7 +21603,7 @@ GameObject:
   - component: {fileID: 1991072688}
   - component: {fileID: 1991072689}
   m_Layer: 0
-  m_Name: Step (22)
+  m_Name: Step (22) - Position the electrodes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22132,6 +22133,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2086187745 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114878352665009880, guid: d6f9c8bf06bc6804d9b8cbbd52b3b8c4,
+    type: 2}
+  m_PrefabInternal: {fileID: 1736403076}
+  m_Script: {fileID: 11500000, guid: 452f7b2b8f3f3ca458e9f72558632194, type: 3}
 --- !u!4 &2092610792
 Transform:
   m_ObjectHideFlags: 0
@@ -22725,7 +22732,18 @@ MonoBehaviour:
       Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   OnUse:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 521305430}
+        m_MethodName: TakeElectrodes
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: VRTK.UnityEventHelper.VRTK_InteractableObject_UnityEvents+InteractableObjectEvent,
       Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
   OnUnuse:
@@ -22777,8 +22795,8 @@ MonoBehaviour:
   allowedGrabControllers: 0
   grabAttachMechanicScript: {fileID: 0}
   secondaryGrabActionScript: {fileID: 0}
-  isUsable: 0
-  holdButtonToUse: 1
+  isUsable: 1
+  holdButtonToUse: 0
   useOnlyIfGrabbed: 0
   pointerActivatesUseAction: 0
   useOverrideButton: 0
