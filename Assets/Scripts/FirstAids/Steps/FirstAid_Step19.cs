@@ -43,4 +43,3 @@ public class FirstAid_Step19 : BasicStep
 		AEDIsGrabbed = false;
 	}
 }
-"
