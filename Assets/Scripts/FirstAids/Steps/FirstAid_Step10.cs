@@ -5,15 +5,18 @@ using UnityEngine;
 public class FirstAid_Step10 : BasicStep
 {
 
-    // Start after the activation of the step
-    public override void Enter()
-    {
+	[SerializeField] private LiamBodyPart chin;
+	[SerializeField] private LiamBodyPart forehead;
 
-    }
+    public override void Enter(){}
+    public override void Exit(){}
 
-    // Start before the completion of the step
-    public override void Exit()
-    {
+	void Update(){
+		if (chin.isTouching && forehead.isTouching && !this.IsCompleted) {
+			//TODO head animation
 
-    }
+			Debug.Log ("step10 complete");
+			this.Complete ();
+		}
+	}
 }
