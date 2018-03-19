@@ -5,15 +5,41 @@ using UnityEngine;
 public class FirstAid_Step19 : BasicStep
 {
 
-    // Start after the activation of the step
-    public override void Enter()
-    {
+	[SerializeField] private GameObject AED;
+	[SerializeField] private Collider correctArea;
 
-    }
+	private bool AEDIsInArea;
+	private bool AEDIsGrabbed;
 
-    // Start before the completion of the step
-    public override void Exit()
-    {
+    public override void Enter(){}
+    public override void Exit(){}
 
-    }
+	void Start(){
+		AEDIsGrabbed = false;
+	}
+
+	void Update(){
+		if (AEDIsInArea && !AEDIsGrabbed) {
+			this.Complete ();
+			Debug.Log ("Step19 complete");
+		}
+	}
+
+	void OnTriggerEnter(Collider col){
+		if (col.name == AED.name)
+			AEDIsInArea = true;
+	}
+
+	void OnTriggerExit(Collider col){
+		if (col.name == AED.name)
+			AEDIsInArea = false;
+	}
+
+	public void GrabAED(){
+		AEDIsGrabbed = true;
+	}
+
+	public void UngrabAED(){
+		AEDIsGrabbed = false;
+	}
 }
