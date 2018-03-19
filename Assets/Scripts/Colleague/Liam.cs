@@ -20,6 +20,9 @@ public class Liam : MonoBehaviour {
 	[Header("Clothes")]
 	[SerializeField] private GameObject tie;
 
+	[Header("Body")]
+	[SerializeField] private Transform head;
+
 	void Awake(){
 		liamAudioSource = this.gameObject.GetComponent<AudioSource> ();
 		tie.SetActive (false);
@@ -27,7 +30,7 @@ public class Liam : MonoBehaviour {
 
 	void Update(){
 		if (Input.GetKeyDown ("1"))
-			StartCardiacArrest ();
+			StartHeadTilt ();
 	}
 
     public void StartCardiacArrest(){
@@ -64,6 +67,23 @@ public class Liam : MonoBehaviour {
 
 		yield return new WaitForSeconds (3f);
         Scenario.Instance.GetStep(2).Complete();
+		animator.enabled = false;
 	}
 
+	public void StartHeadTilt(){
+		this.GetComponent<Animator> ().enabled = false;
+
+		Debug.Log ("startrotation");
+		head.rotation = Quaternion.Slerp (transform.rotation, Quaternion.Euler (180, 0, 0), Time.deltaTime * 10f);
+//		StartCoroutine ("HeadTilt");
+	}
+
+//	IEnumerator HeadTilt(){
+//		while (head.rotation.eulerAngles.x > -26f) {
+//			head.rotation = Quaternion.Euler (new Vector3(head.rotation.x, head.rotation.y - 0.01f, head.rotation.z));
+//			yield return 0;
+//		}
+//
+//		Debug.Log ("head tilt complete");
+//	}
 }

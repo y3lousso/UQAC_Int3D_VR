@@ -4,16 +4,24 @@ using UnityEngine;
 
 public class FirstAid_Step11 : BasicStep
 {
+	[Header("Step11 spec")]
+	[SerializeField] private Transform LiamsHead;
+	[SerializeField] private float endRotationX;
+	[SerializeField] private float rotationStep;
 
-    // Start after the activation of the step
-    public override void Enter()
-    {
+    public override void Enter(){
+//		StartCoroutine ("HeadTilt");
+	}
 
-    }
+    public override void Exit(){}
 
-    // Start before the completion of the step
-    public override void Exit()
-    {
-
-    }
+//	IEnumerator HeadTilt(){
+//		while (LiamsHead.rotation.x > endRotationX) {
+//			LiamsHead.rotation = Quaternion.Euler (new Vector3(LiamsHead.rotation.x, LiamsHead.rotation.y - rotationStep, LiamsHead.rotation.z));
+//			yield return 0;
+//		}
+//
+//		Debug.Log ("step11 complete");
+//		this.Complete ();
+//	}
 }
