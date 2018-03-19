@@ -4,16 +4,13 @@ using UnityEngine;
 
 public class FirstAid_Step20 : BasicStep
 {
+    public override void Enter(){}
+    public override void Exit(){}
 
-    // Start after the activation of the step
-    public override void Enter()
-    {
+	public void StripVictimsChest(){
+		//modify material of Liam so that the chest skin is visible
 
-    }
-
-    // Start before the completion of the step
-    public override void Exit()
-    {
-
-    }
+		Debug.Log ("step20 complete");
+		this.Complete ();
+	}
 }
