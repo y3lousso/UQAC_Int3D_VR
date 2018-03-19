@@ -4,16 +4,12 @@ using UnityEngine;
 
 public class FirstAid_Step06 : BasicStep
 {
-    public LiamInteraction liamInteraction;
 
-    public void OnVoiceTrigger()
+    void Update()
     {
-        AudioTrigger at = new AudioTrigger(0.1f, 0.1f, 1);
-        if (liamInteraction.leftHand.isTouching | liamInteraction.rightHand.isTouching)
+        if ( (LiamInteraction.instance.leftHand.isTouching | LiamInteraction.instance.rightHand.isTouching ) 
+            && AudioTrigger.instance.isTalking)
         {
-            while (!at.DetectAudio())
-                continue;
-
             this.Complete();
         }
     }
