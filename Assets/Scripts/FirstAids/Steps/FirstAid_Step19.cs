@@ -19,7 +19,7 @@ public class FirstAid_Step19 : BasicStep
 	}
 
 	void Update(){
-		if (AEDIsInArea && !AEDIsGrabbed) {
+		if (AEDIsInArea && !AEDIsGrabbed && !this.IsCompleted) {
 			this.Complete ();
 			Debug.Log ("Step19 complete");
 		}
@@ -43,3 +43,4 @@ public class FirstAid_Step19 : BasicStep
 		AEDIsGrabbed = false;
 	}
 }
+"
