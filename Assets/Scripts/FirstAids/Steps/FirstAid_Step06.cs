@@ -8,8 +8,12 @@ public class FirstAid_Step06 : BasicStep
 
     public void OnVoiceTrigger()
     {
+        AudioTrigger at = new AudioTrigger(0.1f, 0.1f, 1);
         if (liamInteraction.leftHand.isTouching | liamInteraction.rightHand.isTouching)
         {
+            while (!at.DetectAudio())
+                continue;
+
             this.Complete();
         }
     }
