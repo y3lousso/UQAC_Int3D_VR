@@ -5,6 +5,14 @@ using UnityEngine;
 public class FirstAid_Step03 : BasicStep
 {
 
+    void Update()
+    {
+        if (LiamInteraction.instance.isCloseEnough)
+        {
+            this.Complete();
+        }
+    }
+
     // Start after the activation of the step
     public override void Enter()
     {
@@ -17,7 +25,6 @@ public class FirstAid_Step03 : BasicStep
 
     }
 
-	public void OnTriggerEnter(){
-        Complete();
-	}
+    
+
 }

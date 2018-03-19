@@ -6,64 +6,40 @@ public enum UserState {standing, kneeling};
 
 public class UserController : MonoBehaviour {
 
-	[Header ("Start")]
-	[SerializeField] private Vector3 startPosition;
-	[SerializeField] private Vector3 startEulerRot;
+    public static UserController instance;
 
-	[Header("State")]
+    [Header("State")]
 	public UserState currentState;
-	[SerializeField] private bool changingState;
 
-	[Header ("Body")]
-	[SerializeField] private GameObject Setups;
+	[Header ("Headset")]
+    public Transform headset;
+    public float playerHigh = 1.75f;
 
-	private Quaternion startRotation;
+    public void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            throw new System.Exception("Singleton error");
+        }
+    }
 
-	void Start () {
-		transform.position = startPosition;
-		startRotation = Quaternion.Euler (startEulerRot);
-		transform.rotation = startRotation;
-
+    void Start () {
 		currentState = UserState.standing;
-		changingState = false;
 	}
 	
 	void Update () {
-		if (Input.GetKeyDown ("c") && !changingState) {
-			ToggleHeightPosition ();
-		}
+		if(currentState == UserState.standing && headset.position.y < 0.75f * playerHigh  )
+        {
+            currentState = UserState.kneeling;
+        }
+        else if(currentState == UserState.kneeling && headset.position.y > 0.75f * playerHigh)
+        {
+            currentState = UserState.standing;
+        }
 	}
 
-	void ToggleHeightPosition(){
-		if (currentState == UserState.kneeling)
-			StartCoroutine ("Stand");
-		else if (currentState == UserState.standing)
-			StartCoroutine ("Kneel");
-	}
-
-	IEnumerator Kneel(){
-		changingState = true;
-		float finalHeight = -0.6f;
-
-		while (Setups.transform.position.y > finalHeight) {
-			Setups.transform.position += new Vector3(0, -0.01f, 0);
-			yield return 0;
-		}
-
-		currentState = UserState.kneeling;
-		changingState = false;
-	}
-
-	IEnumerator Stand(){
-		changingState = true;
-		float finalHeight = 0f;
-
-		while (Setups.transform.position.y < finalHeight) {
-			Setups.transform.position += new Vector3(0, 0.01f, 0);
-			yield return 0;
-		}
-
-		currentState = UserState.standing;
-		changingState = false;
-	}
 }

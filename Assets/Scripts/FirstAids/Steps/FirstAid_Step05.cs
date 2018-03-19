@@ -4,11 +4,9 @@ using UnityEngine;
 
 public class FirstAid_Step05 : BasicStep
 {
-    public LiamInteraction liamInteraction;
-
     void Update()
     {
-        if (liamInteraction.leftHand.isTouching | liamInteraction.rightHand.isTouching)
+        if (LiamInteraction.instance.leftHand.isTouching | LiamInteraction.instance.rightHand.isTouching)
         {
             this.Complete();
         }

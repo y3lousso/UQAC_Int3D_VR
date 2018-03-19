@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - ViveController
+  - TeleportIgnore
+  - projectile
+  - FxTemporaire
   layers:
   - Default
   - TransparentFX
@@ -14,8 +17,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - LiamProximityTrigger
+  - ViveController
   - 
   - 
   - 

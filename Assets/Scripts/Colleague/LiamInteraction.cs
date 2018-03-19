@@ -4,13 +4,28 @@ using UnityEngine;
 
 public class LiamInteraction : MonoBehaviour {
 
+    public static LiamInteraction instance;
+
     public LiamBodyPart leftHand;
     public LiamBodyPart rightHand;
     public LiamBodyPart forehead;
     public LiamBodyPart chin;
 
-	// Use this for initialization
-	void Start () {
+    public bool isCloseEnough = false;
+
+    public void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            throw new System.Exception("Singleton error");
+        }
+    }
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -18,4 +33,9 @@ public class LiamInteraction : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    public void SetIsCloseEnough(bool state)
+    {
+        isCloseEnough = state;
+    }
 }

@@ -161,9 +161,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4832618316621046}
   - component: {fileID: 135417216168806150}
-  m_Layer: 2
+  m_Layer: 9
   m_Name: CustomControllerCollider
-  m_TagString: Untagged
+  m_TagString: ViveController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -480,9 +480,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4479975221295398}
   - component: {fileID: 135507978163523464}
-  m_Layer: 2
+  m_Layer: 9
   m_Name: CustomControllerCollider
-  m_TagString: Untagged
+  m_TagString: ViveController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -497,7 +497,8 @@ GameObject:
   - component: {fileID: 4266569262501804}
   - component: {fileID: 20917769592208022}
   - component: {fileID: 124913234189136584}
-  - component: {fileID: 114507312862408106}
+  - component: {fileID: 135283362241429970}
+  - component: {fileID: 114085897057772894}
   m_Layer: 0
   m_Name: Camera (eye)
   m_TagString: MainCamera
@@ -1372,7 +1373,7 @@ MeshRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1763,6 +1764,20 @@ MonoBehaviour:
   right: {fileID: 1482015296748766}
   objects: []
   assignAllBeforeIdentified: 0
+--- !u!114 &114085897057772894
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1772689118180454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bca9ccf900ccc84c887d783321d27e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _head: {fileID: 4935927682662298}
+  _ears: {fileID: 4237857044279078}
+  wireframe: 0
 --- !u!114 &114138141918728906
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1882,7 +1897,7 @@ MonoBehaviour:
   customRaycast: {fileID: 0}
   layersToIgnore:
     serializedVersion: 2
-    m_Bits: 4
+    m_Bits: 516
   pointerOriginSmoothingSettings:
     smoothsPosition: 0
     maxAllowedPerFrameDistanceDifference: 0.003
@@ -1900,8 +1915,8 @@ MonoBehaviour:
   rescaleTracer: 0
   cursorMatchTargetRotation: 0
   collisionCheckFrequency: 0
-  customTracer: {fileID: 0}
-  customCursor: {fileID: 0}
+  customTracer: {fileID: 152786, guid: 78ca952d2c8152c44a89f9b406f7e137, type: 2}
+  customCursor: {fileID: 115170, guid: dedfb5ee6b3a49745b85a120679a1bfd, type: 2}
   validLocationObject: {fileID: 0}
   invalidLocationObject: {fileID: 0}
 --- !u!114 &114324806130878318
@@ -2223,20 +2238,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0893f0c8a7712e8458dc3722eef95aca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114507312862408106
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1772689118180454}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6bca9ccf900ccc84c887d783321d27e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _head: {fileID: 4935927682662298}
-  _ears: {fileID: 4237857044279078}
-  wireframe: 0
 --- !u!114 &114526277977911402
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3000,10 +3001,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 452f7b2b8f3f3ca458e9f72558632194, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startPosition: {x: 5.46, y: 0, z: -5.236}
-  startEulerRot: {x: 0, y: 0, z: 0}
   currentState: 0
-  Setups: {fileID: 1657204010357816}
+  headset: {fileID: 4266569262501804}
+  playerHigh: 1.75
 --- !u!114 &114909902028431300
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3141,7 +3141,7 @@ MonoBehaviour:
   customRaycast: {fileID: 0}
   layersToIgnore:
     serializedVersion: 2
-    m_Bits: 4
+    m_Bits: 516
   pointerOriginSmoothingSettings:
     smoothsPosition: 0
     maxAllowedPerFrameDistanceDifference: 0.003
@@ -3159,8 +3159,8 @@ MonoBehaviour:
   rescaleTracer: 0
   cursorMatchTargetRotation: 0
   collisionCheckFrequency: 0
-  customTracer: {fileID: 0}
-  customCursor: {fileID: 0}
+  customTracer: {fileID: 152786, guid: 78ca952d2c8152c44a89f9b406f7e137, type: 2}
+  customCursor: {fileID: 115170, guid: dedfb5ee6b3a49745b85a120679a1bfd, type: 2}
   validLocationObject: {fileID: 0}
   invalidLocationObject: {fileID: 0}
 --- !u!124 &124135763844977582
@@ -3177,6 +3177,18 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1772689118180454}
   m_Enabled: 1
+--- !u!135 &135283362241429970
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1772689118180454}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!135 &135417216168806150
 SphereCollider:
   m_ObjectHideFlags: 1
