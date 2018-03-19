@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class FirstAid_Step09 : BasicStep
 {
+	[SerializeField] private GameObject tie;
 
-    // Start after the activation of the step
-    public override void Enter()
-    {
+    public override void Enter(){}
+    public override void Exit(){}
 
-    }
+	public void RemoveTie(){
+		tie.gameObject.SetActive (false);
 
-    // Start before the completion of the step
-    public override void Exit()
-    {
-
-    }
+		Debug.Log ("step09 complete");
+		this.Complete ();
+	}
 }

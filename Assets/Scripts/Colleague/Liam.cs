@@ -17,8 +17,12 @@ public class Liam : MonoBehaviour {
 	[SerializeField] private AudioClip pain;
 	[SerializeField] private AudioClip fall;
 
+	[Header("Clothes")]
+	[SerializeField] private GameObject tie;
+
 	void Awake(){
 		liamAudioSource = this.gameObject.GetComponent<AudioSource> ();
+		tie.SetActive (false);
 	}
 
 	void Update(){
@@ -55,6 +59,8 @@ public class Liam : MonoBehaviour {
 
 		liamAudioSource.clip = fall;
 		liamAudioSource.Play ();
+
+		tie.SetActive (true);
 
 		yield return new WaitForSeconds (3f);
         Scenario.Instance.GetStep(2).Complete();

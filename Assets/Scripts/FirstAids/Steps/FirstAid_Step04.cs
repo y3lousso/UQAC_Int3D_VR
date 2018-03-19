@@ -12,9 +12,9 @@ public class FirstAid_Step04 : BasicStep
 	}
 
 	void Update(){
-		if (user.currentState == UserState.kneeling && isInCorrectArea) {
+		if (user.currentState == UserState.kneeling && isInCorrectArea && !this.IsCompleted) {
 			this.Complete();
-			Debug.Log ("complete !");
+			Debug.Log ("complete step04 !");
 		}
 	}
 

@@ -5,15 +5,14 @@ using UnityEngine;
 public class FirstAid_Step08 : BasicStep
 {
 
-    // Start after the activation of the step
-    public override void Enter()
-    {
-
+    public override void Enter(){
+		StartCoroutine ("CompleteAfterAudio");
     }
 
-    // Start before the completion of the step
-    public override void Exit()
-    {
+    public override void Exit(){}
 
-    }
+	IEnumerator CompleteAfterAudio(){
+		yield return new WaitForSeconds (8f);
+		this.Complete ();
+	}
 }
