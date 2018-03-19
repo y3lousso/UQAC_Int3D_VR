@@ -17,4 +17,9 @@ public class FirstAid_Step01 : BasicStep
 
     }
 
+    public void OnDoorOpenned()
+    {
+        Complete();
+    }
+
 }
