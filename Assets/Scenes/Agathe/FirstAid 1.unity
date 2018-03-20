@@ -18074,12 +18074,11 @@ MonoBehaviour:
   - {fileID: 1991072689}
   nextSteps:
   - {fileID: 880165817}
-  audioStartClip: {fileID: 8300000, guid: 4e8737186c8a3344d9b8b28681ba7270, type: 3}
+  audioStartClip: {fileID: 0}
   audioHelpClip: {fileID: 0}
   flickeringObject: {fileID: 0}
   source: {fileID: 1815993895}
-  instructions: {fileID: 0}
-  shock: {fileID: 0}
+  shock: {fileID: 8300000, guid: c70af98e256490b4bb31c3f29c17094c, type: 3}
 --- !u!4 &1352766556 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: bf3fe4efbfb62dc4689a62792d0e755f, type: 3}
@@ -20607,7 +20606,7 @@ GameObject:
   - component: {fileID: 1780514513}
   - component: {fileID: 1780514514}
   m_Layer: 0
-  m_Name: Step (25)
+  m_Name: Step (25) - The victim is beathing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20637,7 +20636,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 003bc1daabb70b74c84ec435292fbaba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  autoPassAfterAudioStart: 0
+  autoPassAfterAudioStart: 1
   previousSteps:
   - {fileID: 880165817}
   nextSteps:
@@ -22500,7 +22499,7 @@ GameObject:
   - component: {fileID: 2096121286}
   - component: {fileID: 2096121285}
   m_Layer: 0
-  m_Name: EndStep
+  m_Name: EndStep - This is the end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

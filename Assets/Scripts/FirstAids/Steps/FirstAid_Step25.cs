@@ -4,16 +4,6 @@ using UnityEngine;
 
 public class FirstAid_Step25 : BasicStep
 {
-
-    // Start after the activation of the step
-    public override void Enter()
-    {
-
-    }
-
-    // Start before the completion of the step
-    public override void Exit()
-    {
-
-    }
+    public override void Enter(){}
+    public override void Exit(){}
 }
