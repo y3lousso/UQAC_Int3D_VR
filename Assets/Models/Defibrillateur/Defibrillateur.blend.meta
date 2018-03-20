@@ -34,12 +34,37 @@ ModelImporter:
     4300006: Body
     7400000: Default Take
     9500000: //RootNode
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Body1
+    second: {fileID: 2100000, guid: 848de212a1a675442ae0af31beece830, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Body2
+    second: {fileID: 2100000, guid: a46e7d70eb2665c498218a59d06119ac, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DeliverButton
+    second: {fileID: 2100000, guid: 469af3556ef4fb74bb0ff28647d033e7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Screen
+    second: {fileID: 2100000, guid: 05265b41847ab444097b61fd4d4253b3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: StartButton
+    second: {fileID: 2100000, guid: 1acc2e42109cc1845947f034988dacc5, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
     materialSearch: 1
-    materialLocation: 0
+    materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0

@@ -7,8 +7,33 @@ using System.Collections;
 
 class AudioTrigger : MonoBehaviour
 {
+    public static AudioTrigger instance;
+    public bool isTalking = false;
+
+    int samp_l; // total length of the audio sample in seconds
+    float trig_l; // length in second during which the signal must be over threshold to validate detection 
+    float threshold; // a level threshold btwn 0 & 1 exclusive
+    int max_freq = 0;
+    int min_freq = 0;
+    AudioSource aud = null;
+
+    public void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            throw new System.Exception("Singleton error");
+        }
+    }
+
     private void Start()
     {
+        this.samp_l = 1;
+        this.trig_l = .1f;
+        this.threshold = .1f;
         this.aud = GetComponent<AudioSource>();
         Microphone.GetDeviceCaps("", out min_freq, out max_freq);
     }
@@ -19,21 +44,8 @@ class AudioTrigger : MonoBehaviour
             return nb;
         return -nb;
     }
-    int samp_l; // total length of the audio sample in seconds
-    float trig_l; // length in second during which the signal must be over threshold to validate detection 
-    float threshold; // a level threshold btwn 0 & 1 exclusive
-    int max_freq = 0;
-    int min_freq = 0;
-    AudioSource aud = null;
 
-    public AudioTrigger(float trig_l, float threshold, int samp_l = 1)
-    {
-        this.samp_l = samp_l;
-        this.trig_l = trig_l;
-        this.threshold = threshold;
-    }
-
-    public bool DetectAudio()
+    public void DetectAudio()
     {
         // Default device
         aud.clip = Microphone.Start("", false, samp_l, max_freq);
@@ -63,8 +75,8 @@ class AudioTrigger : MonoBehaviour
         }
 
         if (best_c_samp_above_th / max_freq >= trig_l)
-            return true;
-
-        return false;
+        {
+            // isTalking = true or false
+        }
     }
 }
