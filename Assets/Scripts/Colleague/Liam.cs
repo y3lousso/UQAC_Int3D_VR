@@ -22,9 +22,15 @@ public class Liam : MonoBehaviour {
 
 	[Header("Body")]
 	[SerializeField] private Transform head;
+	[SerializeField] private GameObject electrode1;
+	[SerializeField] private GameObject electrode2;
 
 	void Awake(){
 		liamAudioSource = this.gameObject.GetComponent<AudioSource> ();
+
+		electrode1.SetActive (false);
+		electrode2.SetActive (false);
+
 	}
 
 	void Update(){

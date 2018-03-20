@@ -8,9 +8,11 @@ public class FirstAid_Step20 : BasicStep
     public override void Exit(){}
 
 	public void StripVictimsChest(){
-		//modify material of Liam so that the chest skin is visible
+		if(this.IsActivated){
+			//modify material of Liam so that the chest skin is visible
 
-		Debug.Log ("step20 complete");
-		this.Complete ();
+			Debug.Log ("step20 complete");
+			this.Complete ();
+		}
 	}
 }
