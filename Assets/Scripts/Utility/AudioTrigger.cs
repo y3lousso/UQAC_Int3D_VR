@@ -15,7 +15,6 @@ class AudioTrigger : MonoBehaviour
     float threshold; // a level threshold btwn 0 & 1 exclusive
     int max_freq = 0;
     int min_freq = 0;
-    AudioSource aud = null;
 
     public void Awake()
     {
@@ -34,7 +33,6 @@ class AudioTrigger : MonoBehaviour
         this.samp_l = 1;
         this.trig_l = .1f;
         this.threshold = .1f;
-        this.aud = GetComponent<AudioSource>();
         Microphone.GetDeviceCaps("", out min_freq, out max_freq);
     }
 
@@ -49,20 +47,21 @@ class AudioTrigger : MonoBehaviour
     {
         this.isTalking = false;
         // Default device
-        aud.clip = Microphone.Start("", false, samp_l, max_freq);
+        AudioClip clip = new AudioClip();
+        clip = Microphone.Start("", false, samp_l, max_freq);
 
-        float[] samples = new float[aud.clip.samples * aud.clip.channels];
+        float[] samples = new float[clip.samples * clip.channels];
 
-        aud.clip.GetData(samples, 0);
+        clip.GetData(samples, 0);
         float tmp = 0;
         int consec_samp_above_th = 0;
         int best_c_samp_above_th = 0;
 
         for (int i = 0; i < samples.Length; i++)
         {
-            for (int j = 0; j < aud.clip.channels; j++)
+            for (int j = 0; j < clip.channels; j++)
                 tmp += Abs(samples[i + j]);
-            tmp /= aud.clip.channels;
+            tmp /= clip.channels;
 
             if (tmp > threshold)
                 consec_samp_above_th++;
@@ -72,9 +71,9 @@ class AudioTrigger : MonoBehaviour
                 consec_samp_above_th = 0;
             }
 
-            i += aud.clip.channels - 1;
+            i += clip.channels - 1;
         }
-        Debug.Log("[AUDIOTRIGGER] Nb channels : " + aud.clip.channels + " Nb consec. samples > thres. : " + best_c_samp_above_th +
+        Debug.Log("[AUDIOTRIGGER] Nb channels : " + clip.channels + " Nb consec. samples > thres. : " + best_c_samp_above_th +
             " Max freq : " + max_freq + " trigger len : " + trig_l);
         if (best_c_samp_above_th / max_freq >= trig_l)
         {

@@ -1147,7 +1147,6 @@ GameObject:
   m_Component:
   - component: {fileID: 126170212}
   - component: {fileID: 126170213}
-  - component: {fileID: 126170214}
   m_Layer: 2
   m_Name: Step (3) - Come closer
   m_TagString: Untagged
@@ -1187,18 +1186,6 @@ MonoBehaviour:
   audioStartClip: {fileID: 8300000, guid: 4fab88976f50ac14b8cfdf25d6656d5c, type: 3}
   audioHelpClip: {fileID: 8300000, guid: a13e0ee6dd40f584e9eb8fab180c2305, type: 3}
   flickeringObject: {fileID: 0}
---- !u!135 &126170214
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 126170211}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1.25
-  m_Center: {x: 0.13, y: 0, z: 0.45}
 --- !u!1001 &127617311
 Prefab:
   m_ObjectHideFlags: 0
@@ -14227,6 +14214,8 @@ MonoBehaviour:
   fall: {fileID: 8300000, guid: 413eb45e9d8464a48a020f1dc68f2e48, type: 3}
   tie: {fileID: 1865422720}
   head: {fileID: 1049220001}
+  electrode1: {fileID: 0}
+  electrode2: {fileID: 0}
 --- !u!4 &642377321
 Transform:
   m_ObjectHideFlags: 0
@@ -14437,7 +14426,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh16942
+  m_Name: pb_Mesh16208
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
@@ -15035,7 +15024,6 @@ GameObject:
   m_Component:
   - component: {fileID: 770211353}
   - component: {fileID: 770211354}
-  - component: {fileID: 770211355}
   m_Layer: 0
   m_Name: Step (4) - Kneel
   m_TagString: Untagged
@@ -15075,18 +15063,6 @@ MonoBehaviour:
   audioStartClip: {fileID: 8300000, guid: 91c4d0d839565044ab12acc5dc0103c9, type: 3}
   audioHelpClip: {fileID: 8300000, guid: 4933e95ebcfa04b409bef4b5983c83aa, type: 3}
   flickeringObject: {fileID: 0}
---- !u!65 &770211355
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 770211352}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.76, y: 1, z: 1.57}
-  m_Center: {x: 0.3, y: 0.15, z: 0.7}
 --- !u!4 &779321329 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: f969c6bb74378f148a42712348512d91, type: 3}
@@ -15128,7 +15104,6 @@ Transform:
   - {fileID: 1551891619}
   - {fileID: 81248182}
   - {fileID: 367849583}
-  - {fileID: 1865422725}
   m_Father: {fileID: 1789402181}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: -165.00002, z: 0}
@@ -15460,6 +15435,7 @@ Transform:
   m_LocalPosition: {x: -0.0015270711, y: 0.25612763, z: -0.0012470435}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 1865422725}
   - {fileID: 1047986593}
   - {fileID: 1860753116}
   - {fileID: 2099396356}
@@ -16257,7 +16233,7 @@ Transform:
   m_Children:
   - {fileID: 479985171}
   m_Father: {fileID: 898111002}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1048373244
 GameObject:
@@ -18093,6 +18069,8 @@ MonoBehaviour:
   audioStartClip: {fileID: 0}
   audioHelpClip: {fileID: 8300000, guid: 50213af20a585284a9b585d3f8eb6802, type: 3}
   flickeringObject: {fileID: 0}
+  source: {fileID: 0}
+  shock: {fileID: 0}
 --- !u!4 &1352766556 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: bf3fe4efbfb62dc4689a62792d0e755f, type: 3}
@@ -18669,6 +18647,7 @@ GameObject:
   - component: {fileID: 1548076674}
   - component: {fileID: 1548076673}
   - component: {fileID: 1548076675}
+  - component: {fileID: 1548076676}
   m_Layer: 0
   m_Name: Scenario
   m_TagString: Untagged
@@ -18742,6 +18721,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 1815993895}
+--- !u!114 &1548076676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1548076672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dc943702e6628e49a8cec1b93c9bb49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isTalking: 0
 --- !u!1 &1551891618
 GameObject:
   m_ObjectHideFlags: 0
@@ -20962,7 +20953,6 @@ MonoBehaviour:
   audioStartClip: {fileID: 0}
   audioHelpClip: {fileID: 0}
   flickeringObject: {fileID: 0}
-  liam: {fileID: 642137402}
 --- !u!4 &1839633440
 Transform:
   m_ObjectHideFlags: 0
@@ -21011,7 +21001,7 @@ Transform:
   m_Children:
   - {fileID: 1049220001}
   m_Father: {fileID: 898111002}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1865422720
 GameObject:
@@ -21024,6 +21014,7 @@ GameObject:
   - component: {fileID: 1865422724}
   - component: {fileID: 1865422723}
   - component: {fileID: 1865422722}
+  - component: {fileID: 1865422727}
   - component: {fileID: 1865422721}
   - component: {fileID: 1865422726}
   m_Layer: 2
@@ -21122,13 +21113,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1865422720}
-  m_LocalRotation: {x: -0.06423491, y: -0.08996688, z: -0.0058147507, w: 0.9938541}
-  m_LocalPosition: {x: 0.4, y: 0.484, z: -2.517}
-  m_LocalScale: {x: 0.1247343, y: 0.04442877, z: 0.5924979}
+  m_LocalRotation: {x: 0.63193315, y: 0.01281625, z: 0.020823872, w: 0.77463716}
+  m_LocalPosition: {x: -0.010442039, y: 0.004057047, z: 0.29274553}
+  m_LocalScale: {x: 0.12473442, y: 0.044428807, z: 0.59249824}
   m_Children: []
-  m_Father: {fileID: 828645081}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: -7.396, y: -10.345, z: 0}
+  m_Father: {fileID: 898111002}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 80.539, y: 0.89300007, z: -1.2540001}
 --- !u!114 &1865422726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21201,6 +21192,42 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: VRTK.UnityEventHelper.VRTK_InteractableObject_UnityEvents+InteractableObjectEvent,
       Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+--- !u!114 &1865422727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1865422720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b806f20bd63f114b8961e66c1e09f11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickeringColor: {r: 0, g: 1, b: 0.17241383, a: 0.478}
+  flickeringCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0.02079259
+      outSlope: 0.02079259
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 2.5
+      value: 0.82055664
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 5
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 1
+    m_RotationOrder: 0
 --- !u!1 &1870795222
 GameObject:
   m_ObjectHideFlags: 0
@@ -21593,6 +21620,8 @@ MonoBehaviour:
   audioStartClip: {fileID: 0}
   audioHelpClip: {fileID: 8300000, guid: 4ad8114a27161b849bf24fa9468a5235, type: 3}
   flickeringObject: {fileID: 0}
+  electrode1: {fileID: 0}
+  electrode2: {fileID: 0}
 --- !u!1 &1991867240
 GameObject:
   m_ObjectHideFlags: 0
@@ -22455,7 +22484,7 @@ Transform:
   m_Children:
   - {fileID: 60664647}
   m_Father: {fileID: 898111002}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2100568684
 GameObject:

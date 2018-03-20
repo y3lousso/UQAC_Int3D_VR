@@ -6,7 +6,7 @@ public class FirstAid_Step02 : BasicStep
 {
 
     public override void Enter(){
-		scenario.liam.StartCardiacArrest();
+		Liam.instance.StartCardiacArrest();
 	}
 
     public override void Exit(){}

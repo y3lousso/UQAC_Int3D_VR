@@ -7,8 +7,7 @@ public class FirstAid_Step06 : BasicStep
 
     void Update()
     {
-        if ( (LiamInteraction.instance.leftHand.isTouching | LiamInteraction.instance.rightHand.isTouching ) 
-            && AudioTrigger.instance.isTalking)
+        if ( (LiamInteraction.instance.leftHand.isTouching | LiamInteraction.instance.rightHand.isTouching ) && AudioTrigger.instance.isTalking)
         {
             this.Complete();
         }

@@ -11,7 +11,7 @@ public class FirstAid_Step21 : BasicStep
 		if (this.IsActivated) {
 			//TODO put electrodes on hand
 
-			scenario.user.holdElectrodes = true;
+			UserController.instance.holdElectrodes = true;
 
 			Debug.Log ("step21 complete");
 			this.Complete ();

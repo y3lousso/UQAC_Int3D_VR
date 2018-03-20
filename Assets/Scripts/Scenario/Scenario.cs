@@ -6,10 +6,6 @@ public class Scenario : MonoBehaviour {
 
     public AudioManager AudioManager { get; private set; }
 
-	[Header("Characters")]
-	public Liam liam;
-	public UserController user;
-
     [Header("Scenario Management")]
     public BasicStep rootStep;
     public List<BasicStep> activatedSteps = new List<BasicStep>();

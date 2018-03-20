@@ -5,7 +5,8 @@ using UnityEngine;
 public class FirstAid_Step04 : BasicStep
 {
     void Update(){
-		if (UserController.instance.currentState == UserState.kneeling && LiamInteraction.instance.isCloseEnough) {
+		if (UserController.instance.currentState == UserState.kneeling && LiamInteraction.instance.isCloseEnough)
+        {
 			this.Complete();
 		}
 	}

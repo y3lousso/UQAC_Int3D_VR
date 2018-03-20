@@ -9,45 +9,13 @@ public class FlickeringObject : MonoBehaviour {
     public Color flickeringColor;
     public AnimationCurve flickeringCurve;
     private MeshRenderer meshRenderer;
-    private VRTK.VRTK_InteractableObject interactableObject;
-    private Color baseColor;
 
     private float time = 0f;
-
-    public void OnEnable()
-    {
-        interactableObject = GetComponent<VRTK.VRTK_InteractableObject>();
-        if (interactableObject != null)
-        {
-            interactableObject.InteractableObjectTouched += InteractableObject_InteractableObjectTouched;
-            interactableObject.InteractableObjectUntouched += InteractableObject_InteractableObjectUntouched;
-        }
-    }
-
-    public void OnDisable()
-    {
-        if (interactableObject != null)
-        {
-            interactableObject.InteractableObjectTouched -= InteractableObject_InteractableObjectTouched;
-            interactableObject.InteractableObjectUntouched -= InteractableObject_InteractableObjectUntouched;
-        }
-    }
-
-    private void InteractableObject_InteractableObjectTouched(object sender, VRTK.InteractableObjectEventArgs e)
-    {
-        interactableObject.touchHighlightColor = Color.yellow;
-    }
-
-    private void InteractableObject_InteractableObjectUntouched(object sender, VRTK.InteractableObjectEventArgs e)
-    {
-        interactableObject.touchHighlightColor = baseColor;
-    }
 
     // Use this for initialization
     void Start () {
         IsFlickering = false;
         meshRenderer = GetComponent<MeshRenderer>();
-        baseColor = meshRenderer.material.GetColor("_Color");
         meshRenderer.material.EnableKeyword("_EMISSION");
     }
 	

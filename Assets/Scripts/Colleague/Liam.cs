@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Liam : MonoBehaviour {
 
+    public static Liam instance;
+
     public Animator animator;
 
     [Header("Deplacement")]
@@ -25,11 +27,23 @@ public class Liam : MonoBehaviour {
 	[SerializeField] private GameObject electrode1;
 	[SerializeField] private GameObject electrode2;
 
-	void Awake(){
+    public void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            throw new System.Exception("Singleton error");
+        }
+    }
+
+    void Start(){
 		liamAudioSource = this.gameObject.GetComponent<AudioSource> ();
 
-		electrode1.SetActive (false);
-		electrode2.SetActive (false);
+		//electrode1.SetActive (false);
+		//electrode2.SetActive (false);
 
 	}
 

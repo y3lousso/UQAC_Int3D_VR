@@ -21,7 +21,7 @@ public class FirstAid_Step22 : BasicStep
 	}
 
 	public void PositionElectrodes(){
-		if (scenario.user.holdElectrodes) {
+		if (UserController.instance.holdElectrodes) {
 			if (!electrode1IsPositionned) {
 				PutElectrode1 ();
 			} else {
