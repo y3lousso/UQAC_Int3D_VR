@@ -6,7 +6,6 @@ public class FirstAid_Step23 : BasicStep
 {
 	[Header("Sounds")]
 	[SerializeField] private AudioSource source;
-	[SerializeField] private AudioClip instructions;
 	[SerializeField] private AudioClip shock;
 
     public override void Enter(){
@@ -20,14 +19,11 @@ public class FirstAid_Step23 : BasicStep
 	}
 
 	IEnumerator Step23(){
-		source.clip = instructions;
-		source.Play ();
-		yield return new WaitForSeconds (instructions.length);
-
 		source.clip = shock;
 		source.Play ();
 		yield return new WaitForSeconds (shock.length);
 
-
+		Debug.Log ("Step23 complete");
+		this.Complete ();
 	}
 }

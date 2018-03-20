@@ -13771,7 +13771,6 @@ MonoBehaviour:
   audioStartClip: {fileID: 0}
   audioHelpClip: {fileID: 8300000, guid: d628194e698c57343be2c3e7586f70ff, type: 3}
   flickeringObject: {fileID: 0}
-  user: {fileID: 2086187745}
 --- !u!1001 &556084844
 Prefab:
   m_ObjectHideFlags: 0
@@ -18040,7 +18039,7 @@ GameObject:
   - component: {fileID: 1338711565}
   - component: {fileID: 1338711566}
   m_Layer: 0
-  m_Name: Step (23)
+  m_Name: Step (23) - Electric shock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18075,9 +18074,12 @@ MonoBehaviour:
   - {fileID: 1991072689}
   nextSteps:
   - {fileID: 880165817}
-  audioStartClip: {fileID: 0}
-  audioHelpClip: {fileID: 8300000, guid: 50213af20a585284a9b585d3f8eb6802, type: 3}
+  audioStartClip: {fileID: 8300000, guid: 4e8737186c8a3344d9b8b28681ba7270, type: 3}
+  audioHelpClip: {fileID: 0}
   flickeringObject: {fileID: 0}
+  source: {fileID: 1815993895}
+  instructions: {fileID: 0}
+  shock: {fileID: 0}
 --- !u!4 &1352766556 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: bf3fe4efbfb62dc4689a62792d0e755f, type: 3}
@@ -18780,6 +18782,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ec2b42686cfd8540a20df75be833ea0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  liam: {fileID: 642137402}
+  user: {fileID: 2086187745}
   rootStep: {fileID: 1601215480}
   activatedSteps: []
   completedSteps: []
@@ -21266,7 +21270,6 @@ MonoBehaviour:
   audioStartClip: {fileID: 0}
   audioHelpClip: {fileID: 0}
   flickeringObject: {fileID: 0}
-  liam: {fileID: 642137402}
 --- !u!4 &1839633440
 Transform:
   m_ObjectHideFlags: 0
@@ -21972,7 +21975,6 @@ MonoBehaviour:
   audioStartClip: {fileID: 0}
   audioHelpClip: {fileID: 8300000, guid: 4ad8114a27161b849bf24fa9468a5235, type: 3}
   flickeringObject: {fileID: 0}
-  user: {fileID: 2086187745}
   electrode1: {fileID: 556084848}
   electrode2: {fileID: 556084847}
 --- !u!1 &1991867240
