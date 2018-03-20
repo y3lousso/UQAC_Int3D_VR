@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class BasicStep : MonoBehaviour {
 
-    private Scenario scenario;
+    protected Scenario scenario;
 
     [Header("Scenario Management")]
     public bool autoPassAfterAudioStart = false;
@@ -63,6 +63,8 @@ public abstract class BasicStep : MonoBehaviour {
     private void Awake()
     {
         scenario = GetComponentInParent<Scenario>();
+
+
     }
 
 

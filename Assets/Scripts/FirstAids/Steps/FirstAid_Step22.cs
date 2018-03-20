@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class FirstAid_Step22 : BasicStep
 {
-	[SerializeField] private UserController user;
 	[SerializeField] private GameObject electrode1;
 	[SerializeField] private GameObject electrode2;
 
@@ -22,7 +21,7 @@ public class FirstAid_Step22 : BasicStep
 	}
 
 	public void PositionElectrodes(){
-		if (user.holdElectrodes) {
+		if (scenario.user.holdElectrodes) {
 			if (!electrode1IsPositionned) {
 				PutElectrode1 ();
 			} else {
