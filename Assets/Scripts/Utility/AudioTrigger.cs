@@ -47,6 +47,7 @@ class AudioTrigger : MonoBehaviour
 
     public void DetectAudio()
     {
+        this.isTalking = false;
         // Default device
         aud.clip = Microphone.Start("", false, samp_l, max_freq);
 
@@ -73,10 +74,12 @@ class AudioTrigger : MonoBehaviour
 
             i += aud.clip.channels - 1;
         }
-
+        Debug.Log("[AUDIOTRIGGER] Nb channels : " + aud.clip.channels + " Nb consec. samples > thres. : " + best_c_samp_above_th +
+            " Max freq : " + max_freq + " trigger len : " + trig_l);
         if (best_c_samp_above_th / max_freq >= trig_l)
         {
-            // isTalking = true or false
+            this.isTalking = true;
+            Debug.Log("[AUDIOTRIGGER] Audio detected!");
         }
     }
 }
