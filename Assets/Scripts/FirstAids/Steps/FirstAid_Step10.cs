@@ -12,7 +12,7 @@ public class FirstAid_Step10 : BasicStep
     public override void Exit(){}
 
 	void Update(){
-		if (chin.isTouching && forehead.isTouching && !this.IsCompleted) {
+		if (chin.isTouching && forehead.isTouching) {
 			//TODO head animation
 
 			Debug.Log ("step10 complete");
