@@ -5,20 +5,18 @@ using UnityEngine;
 
 public class FirstAid_Step16 : BasicStep
 {
-    Thread audio_detect_th;
     void Update()
     {
-        if (AudioTrigger.instance.isTalking)
+        if (this.IsActivated && AudioTrigger.instance.isTalking)
         {
-            audio_detect_th.Abort();
+            StopCoroutine(AudioTrigger.instance.DetectAudio());
             this.Complete();
         }
     }
     // Start after the activation of the step
     public override void Enter()
     {
-        audio_detect_th = new Thread(new ThreadStart(AudioTrigger.instance.DetectAudio));
-        audio_detect_th.Start();
+        StartCoroutine(AudioTrigger.instance.DetectAudio());
     }
 
     // Start before the completion of the step

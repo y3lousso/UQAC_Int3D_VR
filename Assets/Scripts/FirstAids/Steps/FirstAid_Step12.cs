@@ -5,6 +5,14 @@ using UnityEngine;
 public class FirstAid_Step12 : BasicStep
 {
 
+    void Update()
+    {
+        if (this.IsActivated && LiamInteraction.instance.mouth.isHolding)
+        {
+            this.Complete();
+        }
+    }
+
     // Start after the activation of the step
     public override void Enter()
     {

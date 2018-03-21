@@ -8,6 +8,7 @@ TagManager:
   - TeleportIgnore
   - projectile
   - FxTemporaire
+  - Electrode
   layers:
   - Default
   - TransparentFX

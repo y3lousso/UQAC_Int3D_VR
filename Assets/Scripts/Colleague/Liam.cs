@@ -19,13 +19,12 @@ public class Liam : MonoBehaviour {
 	[SerializeField] private AudioClip pain;
 	[SerializeField] private AudioClip fall;
 
-	[Header("Clothes")]
-	[SerializeField] private GameObject tie;
-
 	[Header("Body")]
 	[SerializeField] private Transform head;
-	[SerializeField] private GameObject electrode1;
-	[SerializeField] private GameObject electrode2;
+
+    [Header("Head Tilt")]
+    [SerializeField] private Vector3 endRotation = new Vector3(210, -180, 180);
+    [SerializeField] private float rotationTime = 2f;
 
     public void Awake()
     {
@@ -39,15 +38,9 @@ public class Liam : MonoBehaviour {
         }
     }
 
-    void Start(){
+    void Start()
+    {
 		liamAudioSource = this.gameObject.GetComponent<AudioSource> ();
-
-        if (electrode1 != null & electrode2 != null)
-        {
-            electrode1.SetActive (false);
-            electrode2.SetActive (false);
-        }
-
     }
 
 	void Update(){
@@ -90,20 +83,23 @@ public class Liam : MonoBehaviour {
 		animator.enabled = false;
 	}
 
-	public void StartHeadTilt(){
+	public void StartHeadTilt()
+    {
 		this.GetComponent<Animator> ().enabled = false;
-
-		Debug.Log ("startrotation");
-		head.rotation = Quaternion.Slerp (transform.rotation, Quaternion.Euler (180, 0, 0), Time.deltaTime * 10f);
-//		StartCoroutine ("HeadTilt");
+ 		StartCoroutine ("HeadTilt");
 	}
 
-//	IEnumerator HeadTilt(){
-//		while (head.rotation.eulerAngles.x > -26f) {
-//			head.rotation = Quaternion.Euler (new Vector3(head.rotation.x, head.rotation.y - 0.01f, head.rotation.z));
-//			yield return 0;
-//		}
-//
-//		Debug.Log ("head tilt complete");
-//	}
+    IEnumerator HeadTilt()
+    {
+        Vector3 startRotation = head.rotation.eulerAngles;
+        float currentTime = 0f;
+        Debug.Log(currentTime);
+
+        while (currentTime < rotationTime)
+        {
+            currentTime += rotationTime;
+            head.localRotation = Quaternion.Euler(Vector3.Lerp(startRotation, endRotation, currentTime / rotationTime));
+            yield return new WaitForSeconds(.01f);
+        }
+    }
 }

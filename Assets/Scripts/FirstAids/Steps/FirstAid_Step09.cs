@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class FirstAid_Step09 : BasicStep
 {
-	[SerializeField] private GameObject tie;
 
     public override void Enter(){}
     public override void Exit(){}
 
-	public void RemoveTie(){
-		tie.gameObject.SetActive (false);
-
-		Debug.Log ("step09 complete");
-		this.Complete ();
-	}
+    public void Update()
+    {
+        if (this.IsActivated && LiamInteraction.instance.isTieRemoved == true)
+        {
+            this.Complete();
+        }
+    }
 }

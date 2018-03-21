@@ -5,20 +5,18 @@ using UnityEngine;
 
 public class FirstAid_Step06 : BasicStep
 {
-    Thread audio_detect_th;
    void Update()
     {
-        if ( (LiamInteraction.instance.leftHand.isTouching | LiamInteraction.instance.rightHand.isTouching ) && AudioTrigger.instance.isTalking)
+        if ( (this.IsActivated && LiamInteraction.instance.leftHand.isHolding | LiamInteraction.instance.rightHand.isHolding) && AudioTrigger.instance.isTalking)
         {
-            audio_detect_th.Abort();
+            StopCoroutine(AudioTrigger.instance.DetectAudio());
             this.Complete();
         }
     }
     // Start after the activation of the step
     public override void Enter()
     {
-        audio_detect_th = new Thread(new ThreadStart(AudioTrigger.instance.DetectAudio));
-        audio_detect_th.Start();
+        StartCoroutine(AudioTrigger.instance.DetectAudio());
    }
 
     // Start before the completion of the step

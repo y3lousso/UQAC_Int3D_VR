@@ -5,6 +5,14 @@ using UnityEngine;
 public class FirstAid_Step24 : BasicStep
 {
 
+    private void Update()
+    {
+        if (LiamInteraction.instance.isListenningBreathing)
+        {
+            this.Complete();
+        }
+    }
+
     // Start after the activation of the step
     public override void Enter()
     {

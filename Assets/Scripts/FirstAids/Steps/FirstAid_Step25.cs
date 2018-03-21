@@ -4,6 +4,15 @@ using UnityEngine;
 
 public class FirstAid_Step25 : BasicStep
 {
-    public override void Enter(){}
-    public override void Exit(){}
+    public override void Enter()
+    {
+
+    }
+
+    public override void Exit()
+    {
+
+    }
+
+
 }

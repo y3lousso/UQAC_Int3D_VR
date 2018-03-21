@@ -13,7 +13,7 @@ class AudioTrigger : MonoBehaviour
 
     int samp_l; // total length of the audio sample in seconds
     float trig_l; // length in second during which the signal must be over threshold to validate detection 
-    float threshold; // a level threshold btwn 0 & 1 exclusive
+    public float threshold; // a level threshold btwn 0 & 1 exclusive
     int max_freq = 0;
     int min_freq = 0;
     String device = "";
@@ -34,7 +34,7 @@ class AudioTrigger : MonoBehaviour
     {
         this.samp_l = 2;
         this.trig_l = .1f;
-        this.threshold = .000000001f;
+        this.threshold = 0.001f;
         Microphone.GetDeviceCaps(this.device, out min_freq, out max_freq);
     }
 
@@ -46,14 +46,15 @@ class AudioTrigger : MonoBehaviour
     }
 
     // Can be run inside a separate thread and interrupted
-    public void DetectAudio()
+    public IEnumerator DetectAudio()
     {
         this.isTalking = false;
 
         // Default device
         AudioClip clip = new AudioClip();
-        do
-        {
+        while (!isTalking)
+        { 
+
             clip = Microphone.Start(this.device, false, this.samp_l, this.min_freq);
 
             if (Microphone.IsRecording(this.device))
@@ -61,7 +62,7 @@ class AudioTrigger : MonoBehaviour
                 while (!(Microphone.GetPosition(this.device) > 0))
                     continue;
                 // Now that recording started, let it go through and the stop it
-                System.Threading.Thread.Sleep(1000 * this.samp_l);
+                yield return new WaitForSeconds(1);
                 Microphone.End(this.device);
             }
             else
@@ -90,6 +91,6 @@ class AudioTrigger : MonoBehaviour
                 this.isTalking = true;
                 Debug.Log("[AUDIOTRIGGER] Talk detected!");
             }
-        } while (!this.isTalking && Thread.CurrentThread.IsAlive);
+        }
     }
 }

@@ -10,7 +10,6 @@ public class FirstAid_Step14 : BasicStep
         {
             this.Complete();
         }
-
     }
 
     // Start after the activation of the step

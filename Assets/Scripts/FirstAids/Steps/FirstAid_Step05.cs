@@ -6,7 +6,7 @@ public class FirstAid_Step05 : BasicStep
 {
     void Update()
     {
-        if (LiamInteraction.instance.leftHand.isTouching | LiamInteraction.instance.rightHand.isTouching)
+        if (this.IsActivated && LiamInteraction.instance.leftHand.isHolding | LiamInteraction.instance.rightHand.isHolding)
         {
             this.Complete();
         }
