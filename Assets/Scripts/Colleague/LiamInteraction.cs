@@ -12,6 +12,7 @@ public class LiamInteraction : MonoBehaviour {
     public LiamBodyPart chin;
 
     public bool isCloseEnough = false;
+    public bool isListenningBreathing = false;
 
     public void Awake()
     {
@@ -37,5 +38,10 @@ public class LiamInteraction : MonoBehaviour {
     public void SetIsCloseEnough(bool state)
     {
         isCloseEnough = state;
+    }
+
+    public void SetIsListenningBreathing(bool state)
+    {
+        isListenningBreathing = state;
     }
 }
