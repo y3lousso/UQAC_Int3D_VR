@@ -1,29 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class FirstAid_Step06 : BasicStep
 {
-    int maxCount = 5;
-
-    void Update()
+   void Update()
     {
-        if ( (LiamInteraction.instance.leftHand.isTouching | LiamInteraction.instance.rightHand.isTouching ) && AudioTrigger.instance.isTalking)
+        if ( (this.IsActivated && LiamInteraction.instance.leftHand.isHolding | LiamInteraction.instance.rightHand.isHolding) && AudioTrigger.instance.isTalking)
         {
+            StopCoroutine(AudioTrigger.instance.DetectAudio());
             this.Complete();
         }
     }
     // Start after the activation of the step
     public override void Enter()
     {
-        int counter = 0;
-        // Hopefully this won't block everything...
-        do
-        {
-            counter++;
-            AudioTrigger.instance.DetectAudio();
-        } while (!AudioTrigger.instance.isTalking && counter>maxCount);
-    }
+        StartCoroutine(AudioTrigger.instance.DetectAudio());
+   }
 
     // Start before the completion of the step
     public override void Exit()

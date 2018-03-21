@@ -8,14 +8,14 @@ public class FlickeringObject : MonoBehaviour {
 
     public Color flickeringColor;
     public AnimationCurve flickeringCurve;
-    private MeshRenderer meshRenderer;
+    private Renderer meshRenderer;
 
     private float time = 0f;
 
     // Use this for initialization
     void Start () {
         IsFlickering = false;
-        meshRenderer = GetComponent<MeshRenderer>();
+        meshRenderer = GetComponent<Renderer>();
         meshRenderer.material.EnableKeyword("_EMISSION");
     }
 	

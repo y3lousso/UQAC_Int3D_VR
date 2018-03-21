@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class FirstAid_Step20 : BasicStep
 {
+
     public override void Enter(){}
     public override void Exit(){}
 
-	public void StripVictimsChest(){
-		if(this.IsActivated){
-			//modify material of Liam so that the chest skin is visible
 
-			Debug.Log ("step20 complete");
+	void Update(){
+		if(this.IsActivated && LiamInteraction.instance.isShirtRemoved)
+        {
 			this.Complete ();
 		}
 	}

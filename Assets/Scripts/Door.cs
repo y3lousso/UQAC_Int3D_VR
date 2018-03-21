@@ -5,7 +5,7 @@ using UnityEngine;
 public class Door : MonoBehaviour {
 
     public bool isOpen = false;
-    public Collider collider;
+    public Collider col;
     public AnimatePosition animatePosition;
     
 	// Use this for initialization
@@ -23,13 +23,13 @@ public class Door : MonoBehaviour {
         if (isOpen) // Close
         {
             animatePosition.ReverseAnimation();
-            collider.enabled = true;
+            col.enabled = true;
             isOpen = false;
         }
         else // Open
         {
             animatePosition.StartAnimation();
-            collider.enabled = false;
+            col.enabled = false;
             isOpen = true;
         }
     }

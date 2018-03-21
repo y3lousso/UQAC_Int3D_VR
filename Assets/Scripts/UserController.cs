@@ -16,7 +16,7 @@ public class UserController : MonoBehaviour {
     public float playerHigh = 1.75f;
 
 	[Header("Hands")]
-	public bool holdElectrodes;
+	public bool holdElectrodes = false;
 
     public void Awake()
     {
@@ -28,8 +28,6 @@ public class UserController : MonoBehaviour {
         {
             throw new System.Exception("Singleton error");
         }
-
-		holdElectrodes = false;
     }
 
     void Start () {
@@ -46,5 +44,10 @@ public class UserController : MonoBehaviour {
             currentState = UserState.standing;
         }
 	}
+
+    public void HoldElectrode()
+    {
+        holdElectrodes = true;
+    }
 
 }

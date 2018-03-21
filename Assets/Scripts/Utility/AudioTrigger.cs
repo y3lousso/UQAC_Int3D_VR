@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using UnityEngine;
 using System.Collections;
+using System.Threading;
 
 class AudioTrigger : MonoBehaviour
 {
@@ -12,9 +13,10 @@ class AudioTrigger : MonoBehaviour
 
     int samp_l; // total length of the audio sample in seconds
     float trig_l; // length in second during which the signal must be over threshold to validate detection 
-    float threshold; // a level threshold btwn 0 & 1 exclusive
+    public float threshold; // a level threshold btwn 0 & 1 exclusive
     int max_freq = 0;
     int min_freq = 0;
+    String device = "";
 
     public void Awake()
     {
@@ -30,55 +32,65 @@ class AudioTrigger : MonoBehaviour
 
     private void Start()
     {
-        this.samp_l = 1;
+        this.samp_l = 2;
         this.trig_l = .1f;
-        this.threshold = .1f;
-        Microphone.GetDeviceCaps("", out min_freq, out max_freq);
+        this.threshold = 0.001f;
+        Microphone.GetDeviceCaps(this.device, out min_freq, out max_freq);
     }
 
-    private float Abs(float nb)
+    private static float Abs(float nb)
     {
         if (nb >= 0)
             return nb;
         return -nb;
     }
 
-    public void DetectAudio()
+    // Can be run inside a separate thread and interrupted
+    public IEnumerator DetectAudio()
     {
         this.isTalking = false;
+
         // Default device
         AudioClip clip = new AudioClip();
-        clip = Microphone.Start("", false, samp_l, max_freq);
+        while (!isTalking)
+        { 
 
-        float[] samples = new float[clip.samples * clip.channels];
+            clip = Microphone.Start(this.device, false, this.samp_l, this.min_freq);
 
-        clip.GetData(samples, 0);
-        float tmp = 0;
-        int consec_samp_above_th = 0;
-        int best_c_samp_above_th = 0;
-
-        for (int i = 0; i < samples.Length; i++)
-        {
-            for (int j = 0; j < clip.channels; j++)
-                tmp += Abs(samples[i + j]);
-            tmp /= clip.channels;
-
-            if (tmp > threshold)
-                consec_samp_above_th++;
-            else if (consec_samp_above_th > best_c_samp_above_th)
+            if (Microphone.IsRecording(this.device))
+            { //check that the mic is recording, otherwise you'll get stuck in an infinite loop waiting for it to start
+                while (!(Microphone.GetPosition(this.device) > 0))
+                    continue;
+                // Now that recording started, let it go through and the stop it
+                yield return new WaitForSeconds(1);
+                Microphone.End(this.device);
+            }
+            else
             {
-                best_c_samp_above_th = consec_samp_above_th;
-                consec_samp_above_th = 0;
+                Debug.Log("There was a problem recording from the default microphone!");
             }
 
-            i += clip.channels - 1;
-        }
-        Debug.Log("[AUDIOTRIGGER] Nb channels : " + clip.channels + " Nb consec. samples > thres. : " + best_c_samp_above_th +
-            " Max freq : " + max_freq + " trigger len : " + trig_l);
-        if (best_c_samp_above_th / max_freq >= trig_l)
-        {
-            this.isTalking = true;
-            Debug.Log("[AUDIOTRIGGER] Audio detected!");
+            float[] samples = new float[clip.samples * clip.channels];
+
+            clip.GetData(samples, 0);
+
+            float rawlvl = 0;
+            float avglvl = 0;
+
+            foreach (float f in samples)
+            {
+                rawlvl += Abs(f);
+            }
+
+            avglvl = rawlvl / samples.Length;
+
+            Debug.Log("[AUDIOTRIGGER] Raw level is " + rawlvl + " average is " + avglvl);
+
+            if (avglvl > this.threshold)
+            {
+                this.isTalking = true;
+                Debug.Log("[AUDIOTRIGGER] Talk detected!");
+            }
         }
     }
 }
