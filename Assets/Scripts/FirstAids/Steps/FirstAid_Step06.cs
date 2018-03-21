@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FirstAid_Step06 : BasicStep
 {
+    int maxCount = 5;
 
     void Update()
     {
@@ -15,11 +16,13 @@ public class FirstAid_Step06 : BasicStep
     // Start after the activation of the step
     public override void Enter()
     {
+        int counter = 0;
         // Hopefully this won't block everything...
         do
         {
+            counter++;
             AudioTrigger.instance.DetectAudio();
-        } while (!AudioTrigger.instance.isTalking);
+        } while (!AudioTrigger.instance.isTalking && counter>maxCount);
     }
 
     // Start before the completion of the step

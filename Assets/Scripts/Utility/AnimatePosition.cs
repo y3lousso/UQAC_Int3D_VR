@@ -16,7 +16,7 @@ public class AnimatePosition : MonoBehaviour {
     public bool runOnStart = false;
     public bool running = false;
     public float refreshTime = 0.01f;
-    public bool requestedStop = false;
+    public float duration = 3f;
 
     [Header("Movement settings")]
     public AnimationCurve posXCurve = AnimationCurve.Constant(0, 1, 0);
@@ -31,8 +31,10 @@ public class AnimatePosition : MonoBehaviour {
 	/// <summary>  
 	///		Starts the animation if runOnStart is true
 	/// </summary> 
-	void Start() {
-		if (runOnStart) {
+	void Start()
+    {
+		if (runOnStart)
+        {
 			StartAnimation();
 		}
 	}
@@ -40,43 +42,72 @@ public class AnimatePosition : MonoBehaviour {
 	/// <summary>  
 	/// 	Run the animation if not already running
 	/// </summary> 
-	public void StartAnimation () {
-		gameObject.SetActive(true);
-
+	public void StartAnimation ()
+    {
 		if (!running)
-			StartCoroutine(RunAnimation());
+        {
+            StartCoroutine("Play");
+        }			
 	}
 
-	/// <summary>  
-	/// 	Stop the animation if it's running in a loop
+    /// <summary>  
+	/// 	Run the animation in reverse if not already running
 	/// </summary> 
-	public void StopAnimation () {
-		requestedStop = true;
-	}
+	public void ReverseAnimation()
+    {
+        if (!running)
+        {
+            StartCoroutine("Reverse");
+        }            
+    }
 
 	/// <summary>  
 	/// 	Coroutine running the animation
 	/// </summary> 
-	IEnumerator RunAnimation () {
+	IEnumerator Play ()
+    {
 		Vector3 startPos = transform.localPosition;
 		Vector3 startRot = transform.localRotation.eulerAngles;
 
-		float startTime = Time.realtimeSinceStartup;
+		float currentTime = 0;
 		running = true;
 
-		while (!requestedStop) {
-			float curTime = Time.realtimeSinceStartup - startTime;
+        Debug.Log("play");
+        while (currentTime< duration)
+        {
+            currentTime += Time.deltaTime;
 
-			transform.localPosition = startPos + new Vector3(posXCurve.Evaluate(curTime), posYCurve.Evaluate(curTime), posZCurve.Evaluate(curTime));
-			transform.localRotation = Quaternion.Euler(startRot + new Vector3(rotXCurve.Evaluate(curTime), rotYCurve.Evaluate(curTime), rotZCurve.Evaluate(curTime)));
+            transform.localPosition = startPos + new Vector3(posXCurve.Evaluate(currentTime), posYCurve.Evaluate(currentTime), posZCurve.Evaluate(currentTime));
+			transform.localRotation = Quaternion.Euler(startRot + new Vector3(rotXCurve.Evaluate(currentTime), rotYCurve.Evaluate(currentTime), rotZCurve.Evaluate(currentTime)));
 
 			yield return new WaitForSeconds(refreshTime);
 		}
 
 		running = false;
-		requestedStop = false;
-		
-		transform.localPosition = startPos;
-		transform.localRotation = Quaternion.Euler(startRot);
 	}
+
+    /// <summary>  
+	/// 	Coroutine running the animation
+	/// </summary> 
+	IEnumerator Reverse()
+    {
+        Vector3 startPos = transform.localPosition;
+        Vector3 startRot = transform.localRotation.eulerAngles;
+
+        float currentTime = 0;
+        running = true;
+
+        Debug.Log("reverse");
+        while (currentTime < duration)
+        {
+            currentTime += Time.deltaTime;
+
+            transform.localPosition = startPos - new Vector3(posXCurve.Evaluate(currentTime), posYCurve.Evaluate(currentTime), posZCurve.Evaluate(currentTime));
+            transform.localRotation = Quaternion.Euler(startRot - new Vector3(rotXCurve.Evaluate(currentTime), rotYCurve.Evaluate(currentTime), rotZCurve.Evaluate(currentTime)));
+
+            yield return new WaitForSeconds(refreshTime);
+        }
+
+        running = false;
+    }
 }

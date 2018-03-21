@@ -58,13 +58,11 @@ public abstract class BasicStep : MonoBehaviour {
     [Header("Step Instructions")]
     public AudioClip audioStartClip;
     public AudioClip audioHelpClip;
-    public FlickeringObject flickeringObject;
+    public List<FlickeringObject> flickeringObjects;
 
     private void Awake()
     {
         scenario = GetComponentInParent<Scenario>();
-
-
     }
 
 

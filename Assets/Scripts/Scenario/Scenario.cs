@@ -32,9 +32,12 @@ public class Scenario : MonoBehaviour {
 	public void PlayAudioHelp()
     {       
         AudioManager.PlaySoundClip(activatedSteps[0].audioHelpClip);
-        if (activatedSteps[0].flickeringObject != null)
+        if (activatedSteps[0].flickeringObjects != null)
         {
-            activatedSteps[0].flickeringObject.IsFlickering = true;
+            foreach(FlickeringObject obj in activatedSteps[0].flickeringObjects)
+            {
+                obj.IsFlickering = true;
+            }            
         }
     }
 
@@ -47,9 +50,12 @@ public class Scenario : MonoBehaviour {
 
     public void RemoveActiveStep(BasicStep step)
     {
-        if(step == activatedSteps[0] && activatedSteps[0].flickeringObject != null)
+        if(step == activatedSteps[0])
         {
-            activatedSteps[0].flickeringObject.IsFlickering = false;
+            foreach (FlickeringObject obj in activatedSteps[0].flickeringObjects)
+            {
+                obj.IsFlickering = false;
+            }
         }
         activatedSteps.Remove(step);
     }

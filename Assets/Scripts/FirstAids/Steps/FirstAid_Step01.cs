@@ -4,7 +4,15 @@ using UnityEngine;
 
 public class FirstAid_Step01 : BasicStep
 {
+    public Door door;
 
+    private void Update()
+    {
+        if (door.isOpen)
+        {
+            this.Complete();
+        }
+    }
     // Start after the activation of the step
     public override void Enter()
     {
@@ -15,11 +23,6 @@ public class FirstAid_Step01 : BasicStep
     public override void Exit()
     {
 
-    }
-
-    public void OnDoorOpenned()
-    {
-        Complete();
     }
 
 }
