@@ -42,10 +42,13 @@ public class Liam : MonoBehaviour {
     void Start(){
 		liamAudioSource = this.gameObject.GetComponent<AudioSource> ();
 
-		//electrode1.SetActive (false);
-		//electrode2.SetActive (false);
+        if (electrode1 != null & electrode2 != null)
+        {
+            electrode1.SetActive (false);
+            electrode2.SetActive (false);
+        }
 
-	}
+    }
 
 	void Update(){
 		if (Input.GetKeyDown ("1"))

@@ -6,7 +6,7 @@ using UnityEngine;
 public class FirstAid_Step06 : BasicStep
 {
     Thread audio_detect_th;
-    void Update()
+   void Update()
     {
         if ( (LiamInteraction.instance.leftHand.isTouching | LiamInteraction.instance.rightHand.isTouching ) && AudioTrigger.instance.isTalking)
         {
@@ -19,7 +19,7 @@ public class FirstAid_Step06 : BasicStep
     {
         audio_detect_th = new Thread(new ThreadStart(AudioTrigger.instance.DetectAudio));
         audio_detect_th.Start();
-    }
+   }
 
     // Start before the completion of the step
     public override void Exit()
