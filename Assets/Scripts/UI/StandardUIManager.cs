@@ -7,6 +7,8 @@ public class StandardUIManager : MonoBehaviour {
 
     public GameObject AppTab;
     public GameObject SoundTab;
+    public Text timeText;
+    private float currentTime = 0f;
 
 	// Use this for initialization
 	void Start () {
@@ -15,7 +17,8 @@ public class StandardUIManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+        currentTime += Time.deltaTime;
+        timeText.text = currentTime.ToString("0.0");
 	}
 
     public void OnAppButtonPressed()
