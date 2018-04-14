@@ -14,10 +14,11 @@ public class FirstAid_Step23 : BasicStep
 
     public override void Exit(){}
 
-	IEnumerator Step23(){
+	IEnumerator Step23(){        
 		source.clip = shock;
 		source.Play ();
-		yield return new WaitForSeconds (shock.length);
+        VRControllerManager.instance.PlayHapticBothHand(.3f, shock.length, .05f);
+        yield return new WaitForSeconds (shock.length);
 
 		this.Complete ();
 	}
