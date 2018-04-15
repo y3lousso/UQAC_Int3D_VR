@@ -9,19 +9,10 @@ public class FirstAid_Step24 : BasicStep
     {
         if (LiamInteraction.instance.isListenningBreathing)
         {
-            this.Complete();
+			scenario.ecgmanager.StartHeartBeat (this);
         }
     }
 
-    // Start after the activation of the step
-    public override void Enter()
-    {
-
-    }
-
-    // Start before the completion of the step
-    public override void Exit()
-    {
-
-    }
+    public override void Enter(){}
+    public override void Exit(){}
 }

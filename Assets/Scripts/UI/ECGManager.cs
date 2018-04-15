@@ -14,29 +14,27 @@ public class ECGManager : MonoBehaviour {
 	[SerializeField] private VideoPlayer player;
 	[SerializeField] private AudioSource audiosource;
 
-	public void StartFlatline(){
-		StartCoroutine (PlayECG(flatline));
+	// show flatline ecg and then complete the step
+	public void StartFlatline(BasicStep step){
+		StartCoroutine (PlayECG(flatline, step));
+	}
+	// show heartbeat ecg and then complete the step
+	public void StartHeartBeat(BasicStep step){
+		StartCoroutine (PlayECG(heartbeat, step));
 	}
 
-	public void StartHeartBeat(){
-		StartCoroutine (PlayECG(heartbeat));
-	}
-
-	public IEnumerator PlayECG(VideoClip _clip){
+	public IEnumerator PlayECG(VideoClip _clip, BasicStep steptocomplete){
 		ECGPanel.SetActive (true);
 
 		player.clip = _clip;
-		//SET audio to audiosource
 		player.Play ();
 		yield return new WaitForSeconds ((float) _clip.length);
 
 		ECGPanel.SetActive (false);
+		steptocomplete.Complete ();
 	}
 
 	void Start () {}
 
-	void Update () {
-		if (Input.GetKeyDown ("p"))
-			StartFlatline ();
-	}
+	void Update () {}
 }
