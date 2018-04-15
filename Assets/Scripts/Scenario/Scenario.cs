@@ -11,6 +11,8 @@ public class Scenario : MonoBehaviour {
     public List<BasicStep> activatedSteps = new List<BasicStep>();
     public List<BasicStep> completedSteps = new List<BasicStep>();
 
+	public ECGManager ecgmanager;
+
 	public static Scenario Instance;
 
     void Awake()

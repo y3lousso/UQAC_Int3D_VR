@@ -8,19 +8,16 @@ public class FirstAid_Step14 : BasicStep
     {
         if (LiamInteraction.instance.isListenningBreathing)
         {
-            this.Complete();
+			StartCoroutine ("CheckECG");
         }
     }
 
-    // Start after the activation of the step
-    public override void Enter()
-    {
+	public IEnumerator CheckECG(){
+		//launch ECG
+		yield return new WaitForSeconds(10);
+		this.Complete ();
+	}
 
-    }
-
-    // Start before the completion of the step
-    public override void Exit()
-    {
-
-    }
+    public override void Enter(){}
+    public override void Exit(){}
 }
