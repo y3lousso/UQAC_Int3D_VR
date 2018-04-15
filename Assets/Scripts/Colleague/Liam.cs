@@ -23,7 +23,8 @@ public class Liam : MonoBehaviour {
 	[SerializeField] private Transform head;
 
     [Header("Head Tilt")]
-    [SerializeField] private Vector3 endRotation = new Vector3(210, -180, 180);
+    [Range(15,30)]
+    public float rotationAngle = 25;
     [SerializeField] private float rotationTime = 2f;
 
     public void Awake()
@@ -91,15 +92,16 @@ public class Liam : MonoBehaviour {
 
     IEnumerator HeadTilt()
     {
-        Vector3 startRotation = head.rotation.eulerAngles;
+        float timeStep = 0.01f;
         float currentTime = 0f;
-        Debug.Log(currentTime);
+        Vector3 step = new Vector3(rotationAngle*timeStep/rotationTime,0,0);
+
 
         while (currentTime < rotationTime)
         {
-            currentTime += rotationTime;
-            head.localRotation = Quaternion.Euler(Vector3.Lerp(startRotation, endRotation, currentTime / rotationTime));
-            yield return new WaitForSeconds(.01f);
+            head.transform.Rotate(step);
+            currentTime += timeStep;
+            yield return new WaitForSeconds(timeStep);
         }
     }
 }
