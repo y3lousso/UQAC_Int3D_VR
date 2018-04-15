@@ -14,13 +14,22 @@ public class ECGManager : MonoBehaviour {
 	[SerializeField] private VideoPlayer player;
 	[SerializeField] private AudioSource audiosource;
 
+    public Coroutine currentCoroutine;
+
 	// show flatline ecg and then complete the step
 	public void StartFlatline(BasicStep step){
-		StartCoroutine (PlayECG(flatline, step));
+        if (currentCoroutine == null)
+        {
+            currentCoroutine = StartCoroutine(PlayECG(flatline, step));
+        }
 	}
 	// show heartbeat ecg and then complete the step
 	public void StartHeartBeat(BasicStep step){
-		StartCoroutine (PlayECG(heartbeat, step));
+        Debug.Log("Playing beat");
+        if (currentCoroutine == null)
+        {
+            currentCoroutine = StartCoroutine(PlayECG(heartbeat, step));
+        }
 	}
 
 	public IEnumerator PlayECG(VideoClip _clip, BasicStep steptocomplete){
@@ -32,7 +41,8 @@ public class ECGManager : MonoBehaviour {
 
 		ECGPanel.SetActive (false);
 		steptocomplete.Complete ();
-	}
+        currentCoroutine = null;
+    }
 
 	void Start () {}
 

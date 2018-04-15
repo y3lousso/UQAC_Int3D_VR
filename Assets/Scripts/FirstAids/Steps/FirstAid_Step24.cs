@@ -7,7 +7,7 @@ public class FirstAid_Step24 : BasicStep
 
     private void Update()
     {
-        if (LiamInteraction.instance.isListenningBreathing)
+        if (LiamInteraction.instance.isListenningBreathing && this.IsActivated)
         {
 			scenario.ecgmanager.StartHeartBeat (this);
         }
