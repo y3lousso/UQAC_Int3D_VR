@@ -10,7 +10,7 @@ public class FirstAid_Step06 : BasicStep
         if ( (this.IsActivated && LiamInteraction.instance.leftHand.isHolding | LiamInteraction.instance.rightHand.isHolding) && AudioTrigger.instance.isTalking)
         {
             StopCoroutine(AudioTrigger.instance.DetectAudio());
-            this.Complete();
+            Invoke("Complete", 2f);
         }
     }
     // Start after the activation of the step

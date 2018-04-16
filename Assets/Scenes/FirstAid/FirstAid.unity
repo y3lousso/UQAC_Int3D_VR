@@ -14490,7 +14490,7 @@ MonoBehaviour:
   pain: {fileID: 8300000, guid: 84d1b7c9c564ff74f95d11bb2c460a00, type: 3}
   fall: {fileID: 8300000, guid: 413eb45e9d8464a48a020f1dc68f2e48, type: 3}
   head: {fileID: 1049220001}
-  endRotation: {x: 210, y: -180, z: 180}
+  rotationAngle: -25
   rotationTime: 2
 --- !u!95 &535092735
 Animator:
@@ -24035,7 +24035,7 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1433007643}
-  m_LocalRotation: {x: 0.008263219, y: -0.055008817, z: 0.0001490314, w: 0.99845165}
+  m_LocalRotation: {x: 0.00826322, y: -0.05500882, z: 0.00014903142, w: 0.9984517}
   m_LocalPosition: {x: -0.1978, y: 0.368, z: 0.3143}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -25448,7 +25448,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh49654
+  m_Name: pb_Mesh17618
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2

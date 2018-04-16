@@ -23,7 +23,6 @@ public class Liam : MonoBehaviour {
 	[SerializeField] private Transform head;
 
     [Header("Head Tilt")]
-    [Range(15,30)]
     public float rotationAngle = 25;
     [SerializeField] private float rotationTime = 2f;
 

@@ -10,7 +10,7 @@ public class FirstAid_Step16 : BasicStep
         if (this.IsActivated && AudioTrigger.instance.isTalking)
         {
             StopCoroutine(AudioTrigger.instance.DetectAudio());
-            this.Complete();
+            Invoke("Complete", 2f);
         }
     }
     // Start after the activation of the step
