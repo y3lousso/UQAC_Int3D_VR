@@ -23,6 +23,7 @@ public class LiamInteraction : MonoBehaviour {
 
     [Header("Shirt")]
     public SkinnedMeshRenderer shirt;
+    public Material shirtlessMaterial;
     public Collider shirtCollider;
     public bool isShirtRemoved = false;
 
@@ -65,7 +66,7 @@ public class LiamInteraction : MonoBehaviour {
 
     public void RemovedShirt()
     {
-        shirt.material.color = Color.black;
+        shirt.material = shirtlessMaterial;
         shirtCollider.gameObject.SetActive(false);
         isShirtRemoved = true;
     }

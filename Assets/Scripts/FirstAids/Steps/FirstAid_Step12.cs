@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class FirstAid_Step12 : BasicStep
 {
+    public GameObject mouthTrigger;
+
+    public void Start()
+    {
+        mouthTrigger.SetActive(false);
+    }
 
     void Update()
     {
@@ -16,12 +22,12 @@ public class FirstAid_Step12 : BasicStep
     // Start after the activation of the step
     public override void Enter()
     {
-
+        mouthTrigger.SetActive(true);
     }
 
     // Start before the completion of the step
     public override void Exit()
     {
-
+        mouthTrigger.SetActive(false);
     }
 }

@@ -13292,6 +13292,7 @@ MonoBehaviour:
   audioHelpClip: {fileID: 8300000, guid: 200b1b8a4f80f5c4faeb829cc37000cc, type: 3}
   flickeringObjects:
   - {fileID: 2082122310}
+  mouthTrigger: {fileID: 76815177}
 --- !u!328 &362540462
 VideoPlayer:
   m_ObjectHideFlags: 0
@@ -14384,6 +14385,7 @@ MonoBehaviour:
   tie: {fileID: 2069307290}
   isTieRemoved: 0
   shirt: {fileID: 1283581261}
+  shirtlessMaterial: {fileID: 2100000, guid: a11cff4610b1cd6489693189f7adb6bd, type: 2}
   shirtCollider: {fileID: 1283581263}
   isShirtRemoved: 0
   isElectrodeLeftPlaced: 0
@@ -20181,6 +20183,7 @@ MonoBehaviour:
   audioHelpClip: {fileID: 8300000, guid: 33dbae55509d3b642b53f9b84e25828b, type: 3}
   flickeringObjects:
   - {fileID: 1283581260}
+  shirtTrigger: {fileID: 1283581262}
 --- !u!4 &998868360
 Transform:
   m_ObjectHideFlags: 0
@@ -23944,6 +23947,8 @@ MonoBehaviour:
   flickeringObjects:
   - {fileID: 2082122312}
   - {fileID: 2082122311}
+  chinTrigger: {fileID: 1465397366}
+  foreheadTrigger: {fileID: 502945273}
 --- !u!1 &1420395217
 GameObject:
   m_ObjectHideFlags: 0
@@ -25448,7 +25453,7 @@ Mesh:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: pb_Mesh17618
+  m_Name: pb_Mesh17608
   serializedVersion: 8
   m_SubMeshes:
   - serializedVersion: 2
